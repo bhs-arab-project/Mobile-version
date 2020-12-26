@@ -79,30 +79,30 @@ class _IntermediateState extends State<Intermediate> {
     return _questionNumber = 0;
   }
 
-  void checkWin(bool userChoice, BuildContext context, i) {
-    if (userChoice == dataSoalOk[counter].value) {
-      print("correct");
-      final snackbar = SnackBar(
-        duration: Duration(milliseconds: 500),
-        backgroundColor: Colors.green,
-        content: Text("Benar!"),
-      );
-      Scaffold.of(context).showSnackBar(snackbar);
-    } else {
-      print("false");
-      final snackbar = SnackBar(
-        duration: Duration(milliseconds: 500),
-        backgroundColor: Colors.red,
-        content: Text("Salah!"),
-      );
-      Scaffold.of(context).showSnackBar(snackbar);
-    }
-    setState(() {
-      if (i < 9) {
-        counter = counter + 1;
-      }
-    });
-  }
+  // void checkWin(bool userChoice, BuildContext context, i) {
+  //   if (userChoice == dataSoalOk[counter].value) {
+  //     print("correct");
+  //     final snackbar = SnackBar(
+  //       duration: Duration(milliseconds: 500),
+  //       backgroundColor: Colors.green,
+  //       content: Text("Benar!"),
+  //     );
+  //     Scaffold.of(context).showSnackBar(snackbar);
+  //   } else {
+  //     print("false");
+  //     final snackbar = SnackBar(
+  //       duration: Duration(milliseconds: 500),
+  //       backgroundColor: Colors.red,
+  //       content: Text("Salah!"),
+  //     );
+  //     Scaffold.of(context).showSnackBar(snackbar);
+  //   }
+  //   setState(() {
+  //     if (i < 9) {
+  //       counter = counter + 1;
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
