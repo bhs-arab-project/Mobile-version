@@ -1,28 +1,22 @@
 part of '../../uis.dart';
 
+class Question {
+  String questionText;
+  bool questionAnswer;
+  Question(String q, bool a) {
+    questionText = q;
+    questionAnswer = a;
+  }
+}
+
 class Intermediate extends StatefulWidget {
   @override
   _IntermediateState createState() => _IntermediateState();
 }
 
 class _IntermediateState extends State<Intermediate> {
-  List dataSoalOk;
-  var counter = 0;
-
-  void dataSoal() {
-    getSoalInter().then((value) {
-      setState(() {
-        dataSoalOk = value;
-      });
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    dataSoal();
-  }
-
+  // List dataSoalOk;
+  List<Icon> scoreKeeper = [];
   int _questionNumber = 0;
 
   List<Question> _questionBank = [
@@ -60,11 +54,11 @@ class _IntermediateState extends State<Intermediate> {
   }
 
   String getQuestionText() {
-    return _questionBank[_questionNumber].qText;
+    return _questionBank[_questionNumber].questionText;
   }
 
   bool getQuestionAnswer() {
-    return _questionBank[_questionNumber].isCorrect;
+    return _questionBank[_questionNumber].questionAnswer;
   }
 
   bool isFinished() {
@@ -77,6 +71,53 @@ class _IntermediateState extends State<Intermediate> {
 
   int reset() {
     return _questionNumber = 0;
+  }
+
+  void checkAnswer(bool userAnswer) {
+    setState(() {
+      bool correctAnswer = _questionBank[_questionNumber].questionAnswer;
+      if (_questionNumber == _questionBank.length - 1) {
+        Alert(
+          context: context,
+          type: AlertType.error,
+          title: "END OF QUIZ",
+          desc:
+              "You've reach the end of the quiz. If you wish to play again, press reset button below",
+          buttons: [
+            DialogButton(
+              child: Text(
+                "Reset Quiz",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              onPressed: () {
+                _questionNumber = 0;
+                scoreKeeper = [];
+                Navigator.pop(context);
+              },
+              width: 120,
+            )
+          ],
+        ).show();
+        // return true;
+      } else {
+        return false;
+      }
+
+      if (userAnswer == correctAnswer) {
+        scoreKeeper.add(Icon(
+          Icons.check,
+          color: Colors.green,
+        ));
+      } else {
+        scoreKeeper.add(Icon(
+          Icons.close,
+          color: Colors.red,
+        ));
+      }
+      if (_questionNumber < _questionBank.length - 1) {
+      _questionNumber++;
+    }
+    });
   }
 
   // void checkWin(bool userChoice, BuildContext context, i) {
@@ -102,6 +143,20 @@ class _IntermediateState extends State<Intermediate> {
   //       counter = counter + 1;
   //     }
   //   });
+  // }
+
+  // void dataSoal() {
+  //   getSoalInter().then((value) {
+  //     setState(() {
+  //       dataSoalOk = value;
+  //     });
+  //   });
+  // }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   dataSoal();
   // }
 
   @override
@@ -159,190 +214,202 @@ class _IntermediateState extends State<Intermediate> {
                   ],
                 ),
               ),
-              dataSoalOk == null
-                  ? Center(child: SpinKitThreeBounce(color: Colors.orange[600])) :
-              Container(
-                height: 550,
-                padding: const EdgeInsets.only(left: 12),
-                child: Swiper(
-                  itemCount: dataSoalOk.length,
-                  itemWidth: MediaQuery.of(context).size.width - 2 * 25,
-                  layout: SwiperLayout.STACK,
-                  pagination: SwiperPagination(
-                    builder: DotSwiperPaginationBuilder(
-                        activeSize: 20,
-                        space: 8,
-                        activeColor: Colors.orange[600]),
-                  ),
-                  itemBuilder: (context, i,) {
-                    return InkWell(
-                      onTap: () {},
-                      child: Stack(
-                        children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              SizedBox(height: 60),
-                              Card(
-                                elevation: 8,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(32),
-                                ),
-                                color: Colors.grey[100],
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 30.0,
-                                      right: 30.0,
-                                      top: 40.0,
-                                      bottom: 55.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Text(
-                                        dataSoalOk[counter].soal + ".",
-                                        style: TextStyle(
-                                          fontFamily: 'Avenir',
-                                          fontSize: 44,
-                                          color: const Color(0xff47455f),
-                                          fontWeight: FontWeight.w900,
-                                        ),
-                                        textAlign: TextAlign.left,
+              // dataSoalOk == null
+              //     ? Center(child: SpinKitThreeBounce(color: Colors.orange[600]))
+              //     : 
+                  Container(
+                      height: 550,
+                      padding: const EdgeInsets.only(left: 12),
+                      child: Swiper(
+                        itemCount: _questionBank.length,
+                        itemWidth: MediaQuery.of(context).size.width - 2 * 25,
+                        layout: SwiperLayout.STACK,
+                        pagination: SwiperPagination(
+                          builder: DotSwiperPaginationBuilder(
+                              activeSize: 20,
+                              space: 8,
+                              activeColor: Colors.orange[600]),
+                        ),
+                        itemBuilder: (
+                          context,
+                          i,
+                        ) {
+                          return InkWell(
+                            onTap: () {},
+                            child: Stack(
+                              children: <Widget>[
+                                Column(
+                                  children: <Widget>[
+                                    SizedBox(height: 60),
+                                    Card(
+                                      elevation: 8,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(32),
                                       ),
-                                      SizedBox(height: 85),
-                                      Center(
-                                        child: Text(
-                                            'Bahasa arabnya ',
-                                            style: TextStyle(
-                                                fontFamily: 'Mont',
-                                                fontSize: 18,
-                                                color: Colors.black,
-                                                fontWeight:
-                                                    FontWeight.bold),
-                                                    textAlign: TextAlign.left,
-                                          ),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Center(
-                                            child: Text(
-                                              dataSoalOk[counter].bahasaIndo,
+                                      color: Colors.grey[100],
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 30.0,
+                                            right: 30.0,
+                                            top: 40.0,
+                                            bottom: 55.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                               "Soal" + ".",
                                               style: TextStyle(
-                                                  fontFamily: 'Mont',
-                                                  fontSize: 18,
-                                                  color: Colors.black,
-                                                  fontWeight:
-                                                      FontWeight.bold),
-                                            ),
-                                          ),
-                                          SizedBox(width: 10),
-                                        ],
-                                      ),
-                                      Container(
-                                          alignment: Alignment.center,
-                                          margin: EdgeInsets.only(
-                                              top: 10, left: 25, right: 35),
-                                          padding: EdgeInsets.only(
-                                              right: 20,
-                                              left: 10,
-                                              bottom: 5,
-                                              top: 5),
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              color: Colors.amber[900]),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                // datadariJSON[i]['bahasa_arab'],
-                                                dataSoalOk[counter].bahasaArab,
-                                                style: TextStyle(
-                                                  fontFamily: 'Arabic',
-                                                  fontSize: 25,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                                textAlign: TextAlign.left,
+                                                fontFamily: 'Avenir',
+                                                fontSize: 44,
+                                                color: const Color(0xff47455f),
+                                                fontWeight: FontWeight.w900,
                                               ),
-                                            ],
-                                          )),
-                                      SizedBox(height: 95),
-                                    ],
+                                              textAlign: TextAlign.left,
+                                            ),
+                                            SizedBox(height: 85),
+                                            // Center(
+                                            //   child: Text(
+                                            //     'Bahasa arabnya ',
+                                            //     style: TextStyle(
+                                            //         fontFamily: 'Mont',
+                                            //         fontSize: 18,
+                                            //         color: Colors.black,
+                                            //         fontWeight:
+                                            //             FontWeight.bold),
+                                            //     textAlign: TextAlign.left,
+                                            //   ),
+                                            // ),
+                                            // Row(
+                                            //   mainAxisAlignment:
+                                            //       MainAxisAlignment.center,
+                                            //   children: [
+                                                Center(
+                                                  child: Text(
+                                                    _questionBank[_questionNumber].questionText,
+                                                    style: TextStyle(
+                                                        fontFamily: 'Mont',
+                                                        fontSize: 18,
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
+                                            //     SizedBox(width: 10),
+                                            //   ],
+                                            // ),
+                                            // Container(
+                                            //     alignment: Alignment.center,
+                                            //     margin: EdgeInsets.only(
+                                            //         top: 10,
+                                            //         left: 25,
+                                            //         right: 35),
+                                            //     padding: EdgeInsets.only(
+                                            //         right: 20,
+                                            //         left: 10,
+                                            //         bottom: 5,
+                                            //         top: 5),
+                                            //     decoration: BoxDecoration(
+                                            //         borderRadius:
+                                            //             BorderRadius.circular(
+                                            //                 15),
+                                            //         color: Colors.amber[900]),
+                                            //     child: Column(
+                                            //       mainAxisAlignment:
+                                            //           MainAxisAlignment.center,
+                                            //       children: [
+                                            //         Text(
+                                            //           // datadariJSON[i]['bahasa_arab'],
+                                            //           dataSoalOk[counter]
+                                            //               .bahasaArab,
+                                            //           style: TextStyle(
+                                            //             fontFamily: 'Arabic',
+                                            //             fontSize: 25,
+                                            //             color: Colors.white,
+                                            //             fontWeight:
+                                            //                 FontWeight.bold,
+                                            //           ),
+                                            //           textAlign: TextAlign.left,
+                                            //         ),
+                                            //       ],
+                                            //     )),
+                                            SizedBox(height: 95),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Positioned(
+                                  right: 100,
+                                  top: 65,
+                                  child: Text(
+                                    "Quiz",
+                                    style: TextStyle(
+                                      fontFamily: 'Avenir',
+                                      fontSize: 150,
+                                      color: Colors.black.withOpacity(0.08),
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                                    textAlign: TextAlign.left,
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Positioned(
-                            right: 100,
-                            top: 65,
-                            child: Text(
-                              "Quiz",
-                              style: TextStyle(
-                                fontFamily: 'Avenir',
-                                fontSize: 150,
-                                color: Colors.black.withOpacity(0.08),
-                                fontWeight: FontWeight.w900,
-                              ),
-                              textAlign: TextAlign.left,
+                                Container(
+                                    height: 80,
+                                    margin: EdgeInsets.only(top: 350),
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 14, vertical: 5),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            RaisedButton(
+                                              onPressed: () =>
+                                                  checkAnswer(true),
+                                              color: Colors.orangeAccent,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                              child: Text(
+                                                "True",
+                                                style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'Avenir',
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                            RaisedButton(
+                                              onPressed: () =>
+                                                  checkAnswer(false),
+                                                  
+                                              color: Colors.orangeAccent,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                              child: Text(
+                                                "False",
+                                                style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'Avenir',
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )))
+                              ],
                             ),
-                          ),
-                          Container(
-                              height: 80,
-                              margin: EdgeInsets.only(top: 350),
-                              alignment: Alignment.center,
-                              child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 14, vertical: 5),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      RaisedButton(
-                                        onPressed: () =>
-                                            checkWin(true, context, i),
-                                        color: Colors.orangeAccent,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: Text(
-                                          "True",
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'Avenir',
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                      RaisedButton(
-                                        onPressed: () =>
-                                            checkWin(false, context, i),
-                                        color: Colors.orangeAccent,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: Text(
-                                          "False",
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'Avenir',
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  )))
-                        ],
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
-              ),
+                    ),
             ],
           ),
         ),

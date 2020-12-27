@@ -11,7 +11,7 @@ import 'dart:math';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
-import 'package:bahasa_arab/ui/quiz/intermediate/quizInter.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 part 'bottomnavigation.dart';
 
