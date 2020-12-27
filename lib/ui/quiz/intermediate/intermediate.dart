@@ -67,9 +67,9 @@ class _IntermediateState extends State<Intermediate> {
         Alert(
           context: context,
           type: AlertType.error,
-          title: "END OF QUIZ",
+          title: "Habis",
           desc:
-              "You've reach the end of the quiz. If you wish to play again, press reset button below",
+              "Silahkan pencet tombol reset untuk mngulang dari awal",
           buttons: [
             DialogButton(
               child: Text(
@@ -88,8 +88,42 @@ class _IntermediateState extends State<Intermediate> {
       }
       if (userAnswer == correctAnswer) {
         print("Benar");
+        showToast("Benar",
+            backgroundColor: Colors.green[400],
+            textStyle: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Aveir',
+                fontWeight: FontWeight.w500),
+            context: context,
+            animation: StyledToastAnimation.slideFromBottom,
+            reverseAnimation: StyledToastAnimation.slideToBottom,
+            startOffset: Offset(0.0, 3.0),
+            reverseEndOffset: Offset(0.0, 3.0),
+            position: StyledToastPosition.bottom,
+            duration: Duration(seconds: 4),
+            //Animation duration   animDuration * 2 <= duration
+            animDuration: Duration(seconds: 1),
+            curve: Curves.elasticOut,
+            reverseCurve: Curves.fastOutSlowIn);
       } else {
         print("Salah");
+        showToast("Salah",
+            backgroundColor: Colors.red[400],
+            textStyle: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Aveir',
+                fontWeight: FontWeight.w500),
+            context: context,
+            animation: StyledToastAnimation.slideFromBottom,
+            reverseAnimation: StyledToastAnimation.slideToBottom,
+            startOffset: Offset(0.0, 3.0),
+            reverseEndOffset: Offset(0.0, 3.0),
+            position: StyledToastPosition.bottom,
+            duration: Duration(seconds: 4),
+            //Animation duration   animDuration * 2 <= duration
+            animDuration: Duration(seconds: 1),
+            curve: Curves.elasticOut,
+            reverseCurve: Curves.fastOutSlowIn);
       }
       quizBrain.nextQuestion();
     });
