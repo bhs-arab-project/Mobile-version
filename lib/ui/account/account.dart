@@ -7,15 +7,15 @@ class Account extends StatefulWidget {
 
 class _AccountState extends State<Account> with SingleTickerProviderStateMixin {
   bool _lights = false;
-  AnimationController _animController;
-  Animation<double> _animation;
+  AnimationController animController;
+  Animation<double> animate;
 
   @override
   void initState() {
-    _animController =
+    animController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 200));
-    _animation = Tween(begin: 0.0, end: 1.0).animate(_animController);
-    _animController.forward();
+    animate = Tween(begin: 0.0, end: 1.0).animate(animController);
+    animController.forward();
     super.initState();
   }
 
@@ -46,7 +46,7 @@ class _AccountState extends State<Account> with SingleTickerProviderStateMixin {
                   child: SlideTransition(
                     position:
                         Tween<Offset>(begin: Offset(0, -5), end: Offset(0, 0))
-                            .animate(_animController),
+                            .animate(animController),
                     // transformHitTests: ,
                     child: Card(
                         elevation: 8.0,
