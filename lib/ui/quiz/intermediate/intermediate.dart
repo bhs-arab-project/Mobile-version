@@ -68,11 +68,9 @@ class _IntermediateState extends State<Intermediate> {
           context: context,
           type: AlertType.error,
           title: "Habis",
-          content: Row(
-            children: [
-              Text("Skor anda: ", style: TextStyle(fontFamily: 'Aveir',
-                fontWeight: FontWeight.w500),)
-            ],
+          content: Text(
+            "Skor anda: ",
+            style: TextStyle(fontFamily: 'Aveir', fontWeight: FontWeight.w500),
           ),
           desc: "Silahkan pencet tombol reset untuk mngulang dari awal",
           buttons: [
