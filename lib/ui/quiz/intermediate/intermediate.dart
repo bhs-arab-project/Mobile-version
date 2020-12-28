@@ -68,8 +68,13 @@ class _IntermediateState extends State<Intermediate> {
           context: context,
           type: AlertType.error,
           title: "Habis",
-          desc:
-              "Silahkan pencet tombol reset untuk mngulang dari awal",
+          content: Row(
+            children: [
+              Text("Skor anda: ", style: TextStyle(fontFamily: 'Aveir',
+                fontWeight: FontWeight.w500),)
+            ],
+          ),
+          desc: "Silahkan pencet tombol reset untuk mngulang dari awal",
           buttons: [
             DialogButton(
               child: Text(
@@ -120,7 +125,6 @@ class _IntermediateState extends State<Intermediate> {
             reverseEndOffset: Offset(0.0, 3.0),
             position: StyledToastPosition.bottom,
             duration: Duration(seconds: 4),
-            //Animation duration   animDuration * 2 <= duration
             animDuration: Duration(seconds: 1),
             curve: Curves.elasticOut,
             reverseCurve: Curves.fastOutSlowIn);
