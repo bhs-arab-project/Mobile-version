@@ -17,7 +17,8 @@ class Intermediate extends StatefulWidget {
 }
 
 class _IntermediateState extends State<Intermediate> {
-  // List dataSoalOk;
+  List dataSoalOk;
+  List<Icon> scoreKeeper = [];
 
   // void checkWin(bool userChoice, BuildContext context, i) {
   //   if (userChoice == dataSoalOk[counter].value) {
@@ -44,21 +45,19 @@ class _IntermediateState extends State<Intermediate> {
   //   });
   // }
 
-  // void dataSoal() {
-  //   getSoalInter().then((value) {
-  //     setState(() {
-  //       dataSoalOk = value;
-  //     });
-  //   });
-  // }
+  void dataSoal() {
+    getSoalInter().then((value) {
+      setState(() {
+        dataSoalOk = value;
+      });
+    });
+  }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   dataSoal();
-  // }
-
-  List<Icon> scoreKeeper = [];
+  @override
+  void initState() {
+    super.initState();
+    dataSoal();
+  }
 
   void checkAnswer(bool userAnswer) {
     setState(() {
@@ -186,9 +185,9 @@ class _IntermediateState extends State<Intermediate> {
                   ],
                 ),
               ),
-              // dataSoalOk == null
-              //     ? Center(child: SpinKitThreeBounce(color: Colors.orange[600]))
-              //     :
+              dataSoalOk == null
+                  ? Center(child: SpinKitThreeBounce(color: Colors.orange[600]))
+                  :
               Container(
                 height: 550,
                 padding: const EdgeInsets.only(left: 12),
