@@ -11,7 +11,7 @@ class _AdvanceState extends State<Advance> {
   List dataSoalOk;
 
   void dataSoal() {
-    getSoalAdvan().then((value) {
+    getSoalAdvan(context).then((value) {
       setState(() {
         dataSoalOk = value;
       });

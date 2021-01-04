@@ -10,7 +10,7 @@ class _BeginnerState extends State<Beginner> {
   int count = 0;
 
   void dataSoal() {
-    getSoalBegin().then((value) {
+    getSoalBegin(context).then((value) {
       setState(() {
         dataSoalOk = value;
       });

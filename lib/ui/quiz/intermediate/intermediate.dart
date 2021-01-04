@@ -46,7 +46,7 @@ class _IntermediateState extends State<Intermediate> {
   // }
 
   void dataSoal() {
-    getSoalInter().then((value) {
+    getSoalInter(context).then((value) {
       setState(() {
         dataSoalOk = value;
       });
