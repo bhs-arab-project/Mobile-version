@@ -246,7 +246,7 @@ class _TableBeginState extends State<TableBegin> {
   List kamusArab;
 
   void kosaKata() {
-    getKosaKataBegin().then((value) {
+    getKosaKataBegin(context).then((value) {
       setState(() {
         kamusArab = value;
       });

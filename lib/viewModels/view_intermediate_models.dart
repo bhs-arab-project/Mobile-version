@@ -16,32 +16,21 @@ Future getSoalInter() async {
     }
   } catch (e) {
     showToast('Maaf data belum ada',
-                                                  backgroundColor:
-                                                      Colors.green[400],
-                                                  textStyle: TextStyle(
-                                                      color: Colors.white,
-                                                      fontFamily: 'Avenir',
-                                                      fontWeight:
-                                                          FontWeight.w500),
-                                                  animation:
-                                                      StyledToastAnimation
-                                                          .slideFromBottom,
-                                                  reverseAnimation:
-                                                      StyledToastAnimation
-                                                          .slideToBottom,
-                                                  startOffset: Offset(0.0, 3.0),
-                                                  reverseEndOffset:
-                                                      Offset(0.0, 3.0),
-                                                  position: StyledToastPosition
-                                                      .bottom,
-                                                  duration:
-                                                      Duration(seconds: 4),
-                                                  //Animation duration   animDuration * 2 <= duration
-                                                  animDuration:
-                                                      Duration(seconds: 1),
-                                                  curve: Curves.elasticOut,
-                                                  reverseCurve:
-                                                      Curves.fastOutSlowIn);
+        backgroundColor: Colors.green[400],
+        textStyle: TextStyle(
+            color: Colors.white,
+            fontFamily: 'Avenir',
+            fontWeight: FontWeight.w500),
+        animation: StyledToastAnimation.slideFromBottom,
+        reverseAnimation: StyledToastAnimation.slideToBottom,
+        startOffset: Offset(0.0, 3.0),
+        reverseEndOffset: Offset(0.0, 3.0),
+        position: StyledToastPosition.bottom,
+        duration: Duration(seconds: 4),
+        //Animation duration   animDuration * 2 <= duration
+        animDuration: Duration(seconds: 1),
+        curve: Curves.elasticOut,
+        reverseCurve: Curves.fastOutSlowIn);
     print("Error pada catch $e");
   }
 }
