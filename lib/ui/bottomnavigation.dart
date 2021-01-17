@@ -7,7 +7,7 @@ class Screen extends StatefulWidget {
 
 class _ScreenState extends State<Screen> {
   int _currentPage = 0;
-  final List<Widget> _children = [Quiz(), Learning(), Account()];
+  final List<Widget> _children = [Learning(), Account()];
 
   void onTabTapped(int index) {
     setState(() {
@@ -36,16 +36,12 @@ class _ScreenState extends State<Screen> {
         },
         items: [
           FFNavigationBarItem(
-            iconData: Icons.question_answer,
-            label: 'Quiz',
-          ),
-          FFNavigationBarItem(
             iconData: Icons.border_color,
-            label: 'Learning',
+            label: 'Belajar',
           ),
           FFNavigationBarItem(
             iconData: Icons.account_circle,
-            label: 'Account',
+            label: 'Akun',
           ),
         ],
       ),

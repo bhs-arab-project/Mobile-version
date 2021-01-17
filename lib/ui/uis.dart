@@ -1,4 +1,5 @@
 import 'package:bahasa_arab/constants.dart';
+import 'package:bahasa_arab/package/text_field.dart';
 import 'package:bahasa_arab/viewModels/viewModels.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -18,7 +19,7 @@ part 'bottomnavigation.dart';
 part 'size_helpers.dart';
 
 // Quiz
-part 'quiz/quiz.dart';
+// part 'quiz/quiz.dart';
 // Beginner
 part 'quiz/beginner/beginner.dart';
 part 'quiz/beginner/beginner_quiz.dart';
