@@ -30,9 +30,9 @@ class BeautyTextfield extends StatefulWidget {
       this.duration = const Duration(milliseconds: 50000),
       this.margin = const EdgeInsets.all(10),
       this.obscureText = false,
-      this.backgroundColor = const Color(0xffffd54f),
+      this.backgroundColor = const Color(0xfffafafa),
       this.cornerRadius = const BorderRadius.all(Radius.circular(40)),
-      this.textColor = const Color(0xff5c5bb0),
+      this.textColor = const Color(0xff607d8b),
       this.accentColor = Colors.white,
       this.placeholder = "Placeholder",
       this.isShadow = true,
@@ -127,7 +127,7 @@ class _BeautyTextfieldState extends State<BeautyTextfield> {
                   child: Icon(
                     widget.prefixIcon.icon,
                     color:
-                        isFocus ? widget.backgroundColor : widget.accentColor,
+                        Colors.black,
                   ),
                 ),
                 Expanded(

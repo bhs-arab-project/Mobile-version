@@ -35,11 +35,11 @@ class _LearningState extends State<Learning>
                 child: Stack(
                   children: <Widget>[
                     Container(
-                      height: size.height * 0.4 - 36,
+                      height: 290,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(30),
-                              bottomRight: Radius.circular(30)),
+                              bottomLeft: Radius.circular(40),
+                              bottomRight: Radius.circular(40)),
                           image: DecorationImage(
                               image: AssetImage(
                                   "assets/image/homescreenlearning.png"),
@@ -47,55 +47,21 @@ class _LearningState extends State<Learning>
                     ),
                     Container(
                       margin: EdgeInsets.only(
-                          top: displayWidth(context) * 1 / 2.2,
+                          top: 230,
                           left: 30,
                           right: 30),
-                      height: displayWidth(context) * 1 / 3.3,
+                      height: 120,
                       child: Align(
                           alignment: Alignment.center,
-                          // child: Card(
-                          //   elevation: 8.0,
-                          //   shape: RoundedRectangleBorder(
-                          //     borderRadius: BorderRadius.circular(
-                          //         displayWidth(context) * 0.05),
-                          //   ),
-                          //   child: Column(
-                          //     children: <Widget>[
-                          //       Container(
-                          //         margin: EdgeInsets.symmetric(
-                          //             horizontal: displayWidth(context) * 0.05,
-                          //             vertical: displayWidth(context) * 0.05),
-                          //         child: Text(
-                          //           "Start Learning Arabic",
-                          //           style: TextStyle(
-                          //             fontSize: displayWidth(context) * 0.04,
-                          //             fontFamily: "Avenir",
-                          //             fontWeight: FontWeight.bold,
-                          //           ),
-                          //         ),
-                          //       ),
-                          //       Container(
-                          //         margin: EdgeInsets.symmetric(
-                          //             horizontal: displayWidth(context) * 0.05,
-                          //             vertical: displayWidth(context) * 0.025),
-                          //         child: Text("404 NOT FOUND CONTENT",
-                          //             style: TextStyle(
-                          //                 fontFamily: "Avenir",
-                          //                 fontSize: displayWidth(context) * 0.03,
-                          //                 fontWeight: FontWeight.w500)),
-                          //       ),
-                          //     ],
-                          //   ),
-                          // ),
                           child: BeautyTextfield(
+                            fontFamily: 'Avenir',
+                            fontWeight: FontWeight.w700,
                             width: double.maxFinite,
                             height: 60,
                             duration: Duration(milliseconds: 300),
                             inputType: TextInputType.text,
-                            prefixIcon: Icon(
-                              Icons.lock_outline,
-                            ),
-                            placeholder: "With Suffic Icon",
+                            prefixIcon: Icon(Icons.lock_outline),
+                            placeholder: "Mau belajar apa?",
                             onTap: () {
                               print('Click');
                             },
@@ -105,20 +71,7 @@ class _LearningState extends State<Learning>
                             onSubmitted: (d) {
                               print(d.length);
                             },
-                            // suffixIcon: Icon(Icons.remove_red_eye),
-                          )
-                          // TextField(
-                          //   decoration: InputDecoration(
-                          //     border: OutlineInputBorder(
-                          //       borderSide: BorderSide(
-                          //         color: Colors.red, //this has no effect
-                          //       ),
-                          //       borderRadius: BorderRadius.circular(20.0),
-                          //     ),
-                          //     hintText: "Border decoration text ...",
-                          //   ),
-                          // ),
-                          ),
+                          )),
                     ),
                   ],
                 ),
@@ -126,144 +79,224 @@ class _LearningState extends State<Learning>
               Padding(
                 padding: EdgeInsets.only(right: 300),
                 child: Container(
-                  height: 30,
                   child: Stack(
                     children: [
                       FadeTransition(
                         opacity: _animation,
                         child: Padding(
-                          padding:
-                              const EdgeInsets.only(left: kDefaultPadding / 10),
+                          padding: const EdgeInsets.only(left: 3),
                           child: Text(
-                            "Belajar",
+                            "Pelajaran",
                             style: TextStyle(
-                                fontSize: displayWidth(context) * 0.05,
+                                fontSize: 22,
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'Avenir'),
                           ),
                         ),
                       ),
                       Positioned(
-                          bottom: displayHeight(context) * 0.005,
+                          bottom: 0,
                           left: 0,
                           right: 0,
                           child: Container(
-                            margin: EdgeInsets.only(right: kDefaultPadding / 3),
-                            height: displayWidth(context) * 0.012,
+                            margin: EdgeInsets.only(right: 10),
+                            height: 5,
                             color: Colors.amber.withOpacity(0.2),
                           ))
                     ],
                   ),
                 ),
               ),
-              // ScrollConfiguration(
-              //   behavior: LearningScroll(),
-              //   child: Container(
-              //     height: 200,
-              //     child: SlideTransition(
-              //       position:
-              //           Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0))
-              //               .animate(_animController),
-              //       child: ListView(
-              //         scrollDirection: Axis.horizontal,
-              //         children: <Widget>[
-              //           Stack(
-              //             children: [
-              //               Container(
-              //                 margin: EdgeInsets.only(
-              //                     top: 10,
-              //                     left: 10,),
-              //                 child: RaisedButton(
-              //                   onPressed: () {
-              //                     Navigator.pushNamed(context, '/beginlearn');
-              //                   },
-              //                   shape: RoundedRectangleBorder(
-              //                       borderRadius: BorderRadius.only(
-              //                     topLeft: Radius.circular(
-              //                         displayWidth(context) * 0.05),
-              //                     topRight: Radius.circular(
-              //                         displayWidth(context) * 0.29),
-              //                     bottomLeft: Radius.circular(
-              //                         displayWidth(context) * 0.05),
-              //                     bottomRight: Radius.circular(
-              //                         displayWidth(context) * 0.05),
-              //                   )),
-              //                   padding: EdgeInsets.all(0.0),
-              //                   child: Ink(
-              //                     decoration: BoxDecoration(
-              //                         gradient: LinearGradient(
-              //                             begin: Alignment.topLeft,
-              //                             colors: [
-              //                               HexColor("#089467"),
-              //                               HexColor("#77c4a9")
-              //                             ]),
-              //                         borderRadius: BorderRadius.only(
-              //                           topLeft: Radius.circular(
-              //                               displayWidth(context) * 0.05),
-              //                           topRight: Radius.circular(
-              //                               displayWidth(context) * 0.29),
-              //                           bottomLeft: Radius.circular(
-              //                               displayWidth(context) * 0.05),
-              //                           bottomRight: Radius.circular(
-              //                               displayWidth(context) * 0.05),
-              //                         )),
-              //                     child: Container(
-              //                       constraints: const BoxConstraints(
-              //                           minWidth: 188.0,
-              //                           minHeight:
-              //                               100.0), // min sizes for Material buttons
-              //                       alignment: Alignment.center,
-              //                       child: Container(
-              //                         margin: EdgeInsets.only(
-              //                             top: displayWidth(context) * 0.27),
-              //                         alignment: Alignment.topLeft,
-              //                         child: Column(
-              //                           crossAxisAlignment:
-              //                               CrossAxisAlignment.start,
-              //                           children: [
-              //                             Text("Beginner",
-              //                                 style: TextStyle(
-              //                                     fontWeight: FontWeight.bold,
-              //                                     fontSize:
-              //                                         displayWidth(context) *
-              //                                             0.047,
-              //                                     color: Colors.white,
-              //                                     fontFamily: 'Avenir')),
-              //                             SizedBox(
-              //                                 height: displayHeight(context) *
-              //                                     0.01),
-              //                             Text("Untuk 6-11 Tahun",
-              //                                 style: TextStyle(
-              //                                     fontWeight: FontWeight.bold,
-              //                                     fontSize:
-              //                                         displayWidth(context) *
-              //                                             0.029,
-              //                                     color: Colors.white,
-              //                                     fontFamily: 'Avenir')),
-              //                           ],
-              //                         ),
-              //                       ),
-              //                     ),
-              //                   ),
-              //                 ),
-              //               ),
-              //               Positioned(
-              //                 left: 50,
-              //                 right: 0,
-              //                 top: -20,
-              //                 child: Container(
-              //                   child: Image.asset("assets/icon/beginlearn.png",
-              //                       height: displayHeight(context) * 0.18,
-              //                       width: displayWidth(context) * 0.18),
-              //                 ),
-              //               ),
-              //             ],
-              //           ),
-              //         ],
-              //       ),
-              //     ),
-              //   ),
-              // ),
+              ScrollConfiguration(
+                behavior: LearningScroll(),
+                child: Container(
+                  height: 270,
+                  child: SlideTransition(
+                    position:
+                        Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0))
+                            .animate(_animController),
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        Stack(
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              margin:
+                                  EdgeInsets.fromLTRB(25.0, 35.0, 35.0, 25.0),
+                              child: RaisedButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/beginlearn');
+                                },
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(23),
+                                  topRight: Radius.circular(160),
+                                  bottomLeft: Radius.circular(23),
+                                  bottomRight: Radius.circular(23),
+                                )),
+                                padding: EdgeInsets.all(0.0),
+                                child: Ink(
+                                  decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                          begin: Alignment.topLeft,
+                                          colors: [
+                                            Colors.orange[100],
+                                            Colors.blue[100]
+                                          ]),
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(23),
+                                        topRight: Radius.circular(160),
+                                        bottomLeft: Radius.circular(23),
+                                        bottomRight: Radius.circular(23),
+                                      )),
+                                  child: Container(
+                                    width: 400.0,
+                                    child: Container(
+                                      padding: EdgeInsets.all(30),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text("SHOROF",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 22,
+                                                      color: Colors.white,
+                                                      fontFamily: 'Avenir')),
+                                              SizedBox(
+                                                width: 50,
+                                              ),
+                                              Container(
+                                                alignment: Alignment.center,
+                                                padding: EdgeInsets.all(2),
+                                                height: 25,
+                                                width: 80,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    color: Colors.green),
+                                                child: Text("Beginner",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15,
+                                                        color: Colors.white,
+                                                        fontFamily: 'Avenir')),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(height: 23),
+                                          Text("Mentor: ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18,
+                                                  color: Colors.blue,
+                                                  fontFamily: 'Avenir')),
+                                          Text("Abdul Malik",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20,
+                                                  color: Colors.white,
+                                                  fontFamily: 'Avenir')),
+                                          SizedBox(
+                                            height: 20,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Container(
+                                                  child: Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.assignment,
+                                                    color:
+                                                        Colors.tealAccent[300],
+                                                  ),
+                                                  Text("10 Materi",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20,
+                                                          color: Colors.white,
+                                                          fontFamily:
+                                                              'Avenir')),
+                                                ],
+                                              )),
+                                              SizedBox(width: 100.0,),
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    Text("Kesulitan",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 20,
+                                                            color: Colors.white,
+                                                            fontFamily:
+                                                                'Avenir')),
+                                                    Container(
+                                                      child: Row(
+                                                        children: [
+                                                          Icon(
+                                                            Icons.star,
+                                                            color:
+                                                                Colors.yellow,
+                                                          ),
+                                                          Icon(
+                                                            Icons.star,
+                                                            color:
+                                                                Colors.yellow,
+                                                          ),
+                                                          Icon(
+                                                            Icons.star,
+                                                            color:
+                                                                Colors.yellow,
+                                                          ),
+                                                          Icon(
+                                                            Icons.star,
+                                                            color:
+                                                                Colors.yellow,
+                                                          ),
+                                                          Icon(
+                                                            Icons.star,
+                                                            color:
+                                                                Colors.yellow,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              left: 250,
+                              right: 0,
+                              top: -25,
+                              child: Container(
+                                child: Image.asset("assets/icon/beginlearn.png",
+                                    height: 170, width: 170),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
