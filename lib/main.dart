@@ -22,13 +22,17 @@ class _SphScreenState extends State<SphScreen> with TickerProviderStateMixin {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AnimatedSplashScreen(
-        splash: Image.asset("assets/image/launcher.png"),
-        nextScreen: MyApp(),
-        splashIconSize: 300,
-        curve: Curves.fastOutSlowIn,
-        splashTransition: SplashTransition.scaleTransition,
-        duration: 400,
+      home: Container(
+        width: 100,
+        height: 100,
+        child: AnimatedSplashScreen(
+          splash: Image.asset("assets/image/launcher.png"),
+          nextScreen: MyApp(),
+          splashIconSize: 300,
+          curve: Curves.fastOutSlowIn,
+          splashTransition: SplashTransition.scaleTransition,
+          duration: 400,
+        ),
       ),
     );
   }

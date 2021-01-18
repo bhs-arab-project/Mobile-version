@@ -38,6 +38,7 @@ dependencies:
   ff_navigation_bar: ^0.1.4
   smooth_page_indicator: ^0.2.0
   rflutter_alert: ^1.1.0
+  auto_size_text: ^2.1.0
 
 # dependency_overrides:
 #   path: any
@@ -74,6 +75,7 @@ flutter:
     - assets/background/
     - assets/icon/
     - assets/icon/beginnerquiz/
+    - assets/icon/Star/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

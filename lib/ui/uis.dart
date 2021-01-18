@@ -35,7 +35,7 @@ part 'quiz/advance/advance.dart';
 
 // Learning
 part 'learning/learning.dart';
-part 'learning/beginner/beginner_learn.dart';
+part 'learning/mapel/list.dart';
 part 'learning/intermediate/inter_learn.dart';
 part 'learning/advance/advance_learn.dart';
 

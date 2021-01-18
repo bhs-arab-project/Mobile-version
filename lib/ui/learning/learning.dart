@@ -23,9 +23,10 @@ class _LearningState extends State<Learning>
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       resizeToAvoidBottomPadding: false,
       body: SingleChildScrollView(
         child: Container(
@@ -35,7 +36,7 @@ class _LearningState extends State<Learning>
                 child: Stack(
                   children: <Widget>[
                     Container(
-                      height: 290,
+                      height: MediaQuery.of(context).size.height - 500,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(40),
@@ -47,7 +48,7 @@ class _LearningState extends State<Learning>
                     ),
                     Container(
                       margin: EdgeInsets.only(
-                          top: 230,
+                          top: MediaQuery.of(context).size.height - 570,
                           left: 30,
                           right: 30),
                       height: 120,
@@ -57,10 +58,10 @@ class _LearningState extends State<Learning>
                             fontFamily: 'Avenir',
                             fontWeight: FontWeight.w700,
                             width: double.maxFinite,
-                            height: 60,
+                            height: 55,
                             duration: Duration(milliseconds: 300),
                             inputType: TextInputType.text,
-                            prefixIcon: Icon(Icons.lock_outline),
+                            prefixIcon: Icon(Icons.search),
                             placeholder: "Mau belajar apa?",
                             onTap: () {
                               print('Click');
@@ -76,41 +77,40 @@ class _LearningState extends State<Learning>
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 300),
-                child: Container(
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: 20),
                   child: Stack(
                     children: [
                       FadeTransition(
                         opacity: _animation,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 3),
+                        child: Container(
+                          padding: const 
+                          EdgeInsets.only(bottom: 5),
                           child: Text(
                             "Pelajaran",
                             style: TextStyle(
-                                fontSize: 22,
+                                fontSize: 20,
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'Avenir'),
+                                textAlign: TextAlign.start
                           ),
                         ),
                       ),
                       Positioned(
-                          bottom: 0,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            margin: EdgeInsets.only(right: 10),
-                            height: 5,
-                            color: Colors.amber.withOpacity(0.2),
-                          ))
+                        bottom: 0,
+                        width: MediaQuery.of(context).size.width / 3.5,
+                        child: Container(
+                          height: 2.5,
+                          color: Colors.amber.withOpacity(0.2),
+                        ))
                     ],
                   ),
                 ),
-              ),
               ScrollConfiguration(
                 behavior: LearningScroll(),
                 child: Container(
-                  height: 270,
+                  height: 245,
                   child: SlideTransition(
                     position:
                         Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0))
@@ -123,10 +123,10 @@ class _LearningState extends State<Learning>
                             Container(
                               alignment: Alignment.center,
                               margin:
-                                  EdgeInsets.fromLTRB(25.0, 35.0, 35.0, 25.0),
+                                  EdgeInsets.fromLTRB(15.0, 35.0, 15.0, 30.0),
                               child: RaisedButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, '/beginlearn');
+                                  Navigator.pushNamed(context, '/list');
                                 },
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.only(
@@ -137,159 +137,135 @@ class _LearningState extends State<Learning>
                                 )),
                                 padding: EdgeInsets.all(0.0),
                                 child: Ink(
-                                  decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                          begin: Alignment.topLeft,
-                                          colors: [
-                                            Colors.orange[100],
-                                            Colors.blue[100]
-                                          ]),
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(23),
-                                        topRight: Radius.circular(160),
-                                        bottomLeft: Radius.circular(23),
-                                        bottomRight: Radius.circular(23),
-                                      )),
-                                  child: Container(
-                                    width: 400.0,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(23),
+                                          topRight: Radius.circular(160),
+                                          bottomLeft: Radius.circular(23),
+                                          bottomRight: Radius.circular(23),
+                                        )),
                                     child: Container(
-                                      padding: EdgeInsets.all(30),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text("SHOROF",
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 22,
-                                                      color: Colors.white,
-                                                      fontFamily: 'Avenir')),
-                                              SizedBox(
-                                                width: 50,
-                                              ),
-                                              Container(
-                                                alignment: Alignment.center,
-                                                padding: EdgeInsets.all(2),
-                                                height: 25,
-                                                width: 80,
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20),
-                                                    color: Colors.green),
-                                                child: Text("Beginner",
+                                      width: MediaQuery.of(context).size.width -30,
+                                      child: Container(
+                                        padding: EdgeInsets.all(20),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Text("SHOROF",
                                                     style: TextStyle(
                                                         fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 15,
-                                                        color: Colors.white,
+                                                            FontWeight.w600,
+                                                        fontSize: 20,
+                                                        color: Colors.blueGrey[800],
                                                         fontFamily: 'Avenir')),
-                                              )
-                                            ],
-                                          ),
-                                          SizedBox(height: 23),
-                                          Text("Mentor: ",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 18,
-                                                  color: Colors.blue,
-                                                  fontFamily: 'Avenir')),
-                                          Text("Abdul Malik",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20,
-                                                  color: Colors.white,
-                                                  fontFamily: 'Avenir')),
-                                          SizedBox(
-                                            height: 20,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Container(
-                                                  child: Row(
-                                                children: [
-                                                  Icon(
-                                                    Icons.assignment,
-                                                    color:
-                                                        Colors.tealAccent[300],
-                                                  ),
-                                                  Text("10 Materi",
+                                                SizedBox(
+                                                  width: MediaQuery.of(context).size.width / 5,
+                                                ),
+                                                Container(
+                                                  alignment: Alignment.center,
+                                                  padding: EdgeInsets.all(2),
+                                                  height: 25,
+                                                  width: 70,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      color: Colors.green),
+                                                  child: Text("Beginner",
                                                       style: TextStyle(
                                                           fontWeight:
                                                               FontWeight.bold,
-                                                          fontSize: 20,
+                                                          fontSize: 13,
                                                           color: Colors.white,
                                                           fontFamily:
                                                               'Avenir')),
-                                                ],
-                                              )),
-                                              SizedBox(width: 100.0,),
-                                              Container(
-                                                child: Column(
+                                                )
+                                              ],
+                                            ),
+                                            SizedBox(height: 23),
+                                            Text("Mentor: ",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w700,
+                                                    fontSize: 16,
+                                                    color: Colors.blue,
+                                                    fontFamily: 'Avenir')),
+                                            Text("Abdul Malik",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 18,
+                                                    color: Colors.blueGrey[800],
+                                                    fontFamily: 'Avenir')),
+                                            SizedBox(
+                                              height: 30,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Container(
+                                                    child: Row(
                                                   children: [
-                                                    Text("Kesulitan",
+                                                    Icon(
+                                                      Icons.assignment,
+                                                      color: Colors
+                                                          .tealAccent[300],
+                                                    ),
+                                                    Text("10 Materi",
                                                         style: TextStyle(
                                                             fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 20,
-                                                            color: Colors.white,
+                                                                FontWeight.w500,
+                                                            fontSize: 17,
+                                                            color: Colors.blueGrey[800],
                                                             fontFamily:
                                                                 'Avenir')),
-                                                    Container(
-                                                      child: Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons.star,
-                                                            color:
-                                                                Colors.yellow,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color:
-                                                                Colors.yellow,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color:
-                                                                Colors.yellow,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color:
-                                                                Colors.yellow,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color:
-                                                                Colors.yellow,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    )
                                                   ],
+                                                )),
+                                                SizedBox(
+                                                  width: 100.0,
                                                 ),
-                                              )
-                                            ],
-                                          )
-                                        ],
+                                              ],
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
                               ),
                             ),
                             Positioned(
-                              left: 250,
-                              right: 0,
-                              top: -25,
-                              child: Container(
-                                child: Image.asset("assets/icon/beginlearn.png",
-                                    height: 170, width: 170),
-                              ),
-                            ),
+                                left: 245,
+                                right: 0,
+                                top: -20,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      child: Image.asset(
+                                          "assets/icon/beginlearn.png",
+                                          height: 170,
+                                          width: 170),
+                                    ),
+                                    Container(
+                                      child: Column(
+                                        children: [
+                                          Text("Kesulitan",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 18,
+                                                  color: Colors.blueGrey[800],
+                                                  fontFamily: 'Avenir')),
+                                          Container(
+                                              alignment: Alignment.center,
+                                              child: Image.asset(
+                                                  "assets/icon/Star/5.png",
+                                                  height: 20,
+                                                  width: 100))
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                )),
                           ],
                         ),
                       ],

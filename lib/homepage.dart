@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           '/advance': (context) => Advance(),
           // LEARNING
           // BEGINNER
-          '/beginlearn': (context) => BeginLearn(),
+          '/list': (context) => ListMateri(),
           '/interlearn': (context) => InterLearn(),
         });
   }
