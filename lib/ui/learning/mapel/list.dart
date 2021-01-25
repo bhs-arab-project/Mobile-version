@@ -8,167 +8,152 @@ class ListMateri extends StatefulWidget {
 class _ListMateriState extends State<ListMateri> {
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
+    // SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+    SystemChrome.setEnabledSystemUIOverlays([]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
-      body: Container(
-        width: double.infinity,
+          body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              colors: [Colors.pink[900], Colors.cyan[700], Colors.blue[400]]),
-        ),
+            image: DecorationImage(
+                image: AssetImage("assets/background/background.png"),
+                fit: BoxFit.fill)),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 75),
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            Container(
+              child: Row(
                 children: [
-                  Text("Login",
-                      style: TextStyle(color: Colors.white, fontSize: 70)),
-                  SizedBox(height: 10),
-                  Text("Welcome Back",
-                      style: TextStyle(color: Colors.white, fontSize: 25))
+                  Container(
+                    height: 45.0,
+                    margin: EdgeInsets.only(top: 7.0),
+                    child: FloatingActionButton(
+                      onPressed: (){
+                        Navigator.pop(context);
+                      },
+                      child: Icon(Icons.keyboard_arrow_left, color: Colors.white, size: 30.0,),
+                    )
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: MediaQuery.of(context).size.height / 8),
+                    child: Text("Materi", style: TextStyle(fontStyle: FontStyle.normal, fontSize: 25.0, fontFamily: "Mont")))
                 ],
               ),
             ),
-            SizedBox(height: 20),
-            Expanded(
-              child: ListView(children: [
-                Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(60),
-                        topRight: Radius.circular(60),
-                      )),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 60),
-                      Container(
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(color: Colors.grey[300]),
-                                ),
-                              ),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: "Masukkan Email Anda",
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  fillColor: Colors.blue,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                    borderSide: BorderSide(color: Colors.grey),
-                                  ),
-                                ),
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(color: Colors.grey[300]),
-                                ),
-                              ),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: "Masukkan Password Anda",
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  fillColor: Colors.blue,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                    borderSide: BorderSide(color: Colors.grey),
-                                  ),
-                                ),
-                                style: TextStyle(fontSize: 20),
-                                obscureText: true,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 30),
-                      Text("Forgot Password",
-                          style: TextStyle(color: Colors.grey, fontSize: 15)),
-                      SizedBox(height: 30),
-                      Container(
-                        height: 50,
-                        margin: EdgeInsets.symmetric(horizontal: 50),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Colors.purple[900],
-                        ),
-                        child: Center(
-                          child: Text("Login",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 25)),
-                        ),
-                      ),
-                      SizedBox(height: 30),
-                      Text("Login with social media",
-                          style: TextStyle(color: Colors.grey, fontSize: 15)),
-                      SizedBox(height: 30),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    color: Colors.blue),
-                                child: Center(
-                                  child: Text("Facebook",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 25)),
-                                )),
-                          ),
-                          SizedBox(height: 30),
-                          Expanded(
-                            child: Container(
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    color: Colors.black),
-                                child: Center(
-                                  child: Text("Google",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 25)),
-                                )),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 50),
-                      Row(
+            Container(
+              height: MediaQuery.of(context).size.height / 4,
+              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height / 15, left: 13.0, right: 13.0),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(15.0),
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Don't have an account?",
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 15)),
-                          Text("Register",
+                          CircleAvatar(
+                            radius: 45.0,
+                            backgroundImage: AssetImage("assets/image/man.png"),
+                          ),
+                          SizedBox(
+                              height: MediaQuery.of(context).size.height / 90),
+                          Text("Abdul Malik",
                               style: TextStyle(
-                                  color: Colors.purple, fontSize: 15)),
+                                  fontFamily: "Mont",
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700))
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(15.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Nahwu",
+                              style: TextStyle(
+                                  fontFamily: 'Avenir',
+                                  fontWeight: FontWeight.w700)),
+                          SizedBox(
+                              height: MediaQuery.of(context).size.height / 40),
+                          Text("Nahwu adalah bla bla bla ",
+                              style: TextStyle(
+                                  fontFamily: 'Avenir',
+                                  fontWeight: FontWeight.w600))
+                        ],
+                      ),
+                    )
+                  ],
                 ),
-              ]),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 15,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  // color: Colors.blue[300],
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40.0),
+                      topRight: Radius.circular(40.0))),
+              height: MediaQuery.of(context).size.height - 367.1,
+              child: Container(
+                  alignment: Alignment.topCenter,
+                  margin: EdgeInsets.only(top: 30.0, left: 17.0, right: 17.0),
+                  child: ScrollConfiguration(
+                    behavior: ListData(),
+                    child: ListView(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(bottom: 10.0),
+                          child: RaisedButton(
+                            onPressed: () {},
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15),
+                              bottomLeft: Radius.circular(15),
+                              bottomRight: Radius.circular(15),
+                            )),
+                            padding: EdgeInsets.all(0.0),
+                            child: Ink(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(15),
+                                    topRight: Radius.circular(15),
+                                    bottomLeft: Radius.circular(15),
+                                    bottomRight: Radius.circular(15),
+                                  )),
+                              child: Container(
+                                  child: ListTile(
+                                leading:
+                                    Image.asset("assets/icon/beginlearn.png"),
+                                title: Text("pendahuluan"),
+                                trailing: Icon(Icons.keyboard_arrow_right),
+                                onLongPress: () {
+                                  Navigator.pushNamed(context, '/belajar');
+                                },
+                              )),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )),
             ),
           ],
         ),
       ),
     );
+  }
+}
+
+class ListData extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
   }
 }
