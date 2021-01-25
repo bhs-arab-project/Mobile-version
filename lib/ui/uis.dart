@@ -41,3 +41,6 @@ part 'learning/advance/advance_learn.dart';
 
 // Account
 part 'account/account.dart';
+
+part 'login/login.dart';
+part 'register/register.dart';

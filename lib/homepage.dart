@@ -34,6 +34,8 @@ class MyApp extends StatelessWidget {
           // BEGINNER
           '/list': (context) => ListMateri(),
           '/interlearn': (context) => InterLearn(),
+          // LOGIN
+          '/login': (context) => Login(),
         });
   }
 }

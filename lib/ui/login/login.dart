@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of '../uis.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -22,6 +22,54 @@ class ContentArea extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         FormLogin(),
+        // Flexible(
+        //   flex: 1,
+        //   child: Container(
+        //     margin: const EdgeInsets.all(20),
+        //     child: Column(
+        //       children: [
+        //         Row(
+        //           children: [
+        //             Checkbox(value: false, onChanged: (_) {}),
+        //             Text(
+        //               "Remember Me",
+        //               style: TextStyle(),
+        //             ),
+        //             Spacer(
+        //               flex: 2,
+        //             ),
+        //             RaisedButton(
+        //               onPressed: () {},
+        //               shape: RoundedRectangleBorder(
+        //                   borderRadius: BorderRadius.circular(80.0)),
+        //               padding: const EdgeInsets.all(0.0),
+        //               child: Ink(
+        //                 decoration: const BoxDecoration(
+        //                   gradient: LinearGradient(
+        //                     colors: <Color>[Colors.green, Colors.black],
+        //                   ),
+        //                   borderRadius: BorderRadius.all(Radius.circular(80.0)),
+        //                 ),
+        //                 child: Container(
+        //                   constraints: const BoxConstraints(
+        //                       minWidth: 150.0, minHeight: 36.0),
+        //                   alignment: Alignment.center,
+        //                   child: Text(
+        //                     'Login',
+        //                     textAlign: TextAlign.center,
+        //                     style: TextStyle(
+        //                         color: Colors.white,
+        //                         fontWeight: FontWeight.bold),
+        //                   ),
+        //                 ),
+        //               ),
+        //             ),
+        //           ],
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }
@@ -34,8 +82,8 @@ class FormLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      flex: 2,
+    return Expanded(
+      flex: 1,
       child: Stack(
         children: [
           Container(
@@ -49,7 +97,7 @@ class FormLogin extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height / 3.6,
+            top: MediaQuery.of(context).size.height / 3.4,
             child: Container(
               width: MediaQuery.of(context).size.width,
               child: Card(
@@ -82,15 +130,13 @@ class FormLogin extends StatelessWidget {
                             ),
                           ),
                           labelText: "Email : ",
-                          labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold
-                          ),
+                          labelStyle: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
                       TextField(
                         decoration: InputDecoration(
                           suffixIcon: Icon(
-                            Icons.email,
+                            Icons.lock,
                             color: Colors.blue[300],
                           ),
                           focusedBorder: UnderlineInputBorder(
@@ -99,21 +145,86 @@ class FormLogin extends StatelessWidget {
                             ),
                           ),
                           labelText: "Password : ",
-                          labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold
-                          ),
+                          labelStyle: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 20, bottom: 5, right: 15.0),
+                        padding: const EdgeInsets.only(
+                            top: 20, bottom: 5, right: 15.0),
                         child: Align(
                           alignment: Alignment.bottomRight,
                           child: Text(
-                            "Forgot Password",
+                            "! Forgot Password",
                             style: TextStyle(
                               color: Colors.red[300],
                               fontWeight: FontWeight.bold,
                             ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 10, right: 5),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Checkbox(value: false, onChanged: (_) {}),
+                                Text(
+                                  "Remember Me",
+                                  style: TextStyle(
+                                    fontSize: 12
+                                  ),
+                                ),
+                                Spacer(
+                                  flex: 1,
+                                ),
+                                RaisedButton(
+                                  onPressed: () {
+                                    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+                                  },
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(80.0)),
+                                  padding: const EdgeInsets.all(0.0),
+                                  child: Ink(
+                                    decoration: const BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: <Color>[
+                                          Colors.green,
+                                          Colors.black
+                                        ],
+                                      ),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(80.0)),
+                                    ),
+                                    child: Container(
+                                      constraints: const BoxConstraints(
+                                          minWidth: 130.0, minHeight: 36.0),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        'Login',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 25, bottom: 10),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Apa Anda Tidak Mempunyai Akun? Daftar disini',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey,
+                            )
                           ),
                         ),
                       ),
