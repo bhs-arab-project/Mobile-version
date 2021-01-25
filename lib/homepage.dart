@@ -32,8 +32,11 @@ class MyApp extends StatelessWidget {
           '/advance': (context) => Advance(),
           // LEARNING
           // BEGINNER
-          '/list': (context) => ListMateri(),
           '/interlearn': (context) => InterLearn(),
+
+          // Mapel
+          '/list': (context) => ListMateri(),
+          '/belajar': (context) => Pembelajaran(),
         });
   }
 }
