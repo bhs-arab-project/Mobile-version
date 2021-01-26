@@ -17,7 +17,7 @@ class _InterLearnState extends State<InterLearn> {
     super.dispose();
   }
 
-  @override
+  @override  
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(

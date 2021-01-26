@@ -1,4 +1,5 @@
 import 'package:bahasa_arab/constants.dart';
+import 'package:bahasa_arab/package/slide_panel.dart';
 import 'package:bahasa_arab/package/text_field.dart';
 import 'package:bahasa_arab/viewModels/viewModels.dart';
 import 'package:flutter/material.dart';
@@ -42,3 +43,6 @@ part 'learning/advance/advance_learn.dart';
 
 // Account
 part 'account/account.dart';
+part 'form/login.dart';
+part 'form/register.dart';
+
