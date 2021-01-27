@@ -110,6 +110,7 @@ class _ListMateriState extends State<ListMateri> {
                         )),
                     Center(
                       child: Container(
+                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.height / 8.5),
                           child: Text("Materi",
                               style: TextStyle(
                                   fontStyle: FontStyle.normal,
@@ -122,9 +123,7 @@ class _ListMateriState extends State<ListMateri> {
               Container(
                 height: MediaQuery.of(context).size.height / 4,
                 margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height / 55,
-                    left: 13.0,
-                    right: 13.0),
+                    top: MediaQuery.of(context).size.height / 55,),
                 child: Card(
                   elevation: 7.0,
                   shape: RoundedRectangleBorder(
