@@ -41,7 +41,9 @@ class _ListMateriState extends State<ListMateri> {
                         Container(
                           margin: EdgeInsets.only(bottom: 10.0),
                           child: RaisedButton(
-                            onPressed: () {print('di Klick');},
+                            onPressed: () {
+                              print('di Klick');
+                            },
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(15),
@@ -88,80 +90,93 @@ class _ListMateriState extends State<ListMateri> {
             ),
           ),
           body: Center(
-            child: Column(
-              children: [
-                Container(
-              child: Row(
-                children: [
-                  Container(
-                    height: 40.0,
-                    margin: EdgeInsets.only(top: 7.0),
-                    child: FloatingActionButton(
-                      onPressed: (){
-                        Navigator.pop(context);
-                      },
-                      child: Icon(Icons.keyboard_arrow_left, color: Colors.white, size: 30.0,),
-                    )
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: MediaQuery.of(context).size.height / 8),
-                    child: Text("Materi", style: TextStyle(fontStyle: FontStyle.normal, fontSize: 23.0, fontFamily: "Mont")))
-                ],
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height / 4,
-              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height / 55, left: 13.0, right: 13.0),
-              child: Card(
-                elevation: 7.0,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
+              child: Column(
+            children: [
+              Container(
                 child: Row(
                   children: [
                     Container(
-                      padding: EdgeInsets.all(15.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            radius: 45.0,
-                            backgroundImage: AssetImage("assets/image/man.png"),
+                        height: 40.0,
+                        margin: EdgeInsets.only(top: 7.0),
+                        child: FloatingActionButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Icon(
+                            Icons.keyboard_arrow_left,
+                            color: Colors.white,
+                            size: 30.0,
                           ),
-                          SizedBox(
-                              height: MediaQuery.of(context).size.height / 90),
-                          Text("Abdul Malik",
+                        )),
+                    Center(
+                      child: Container(
+                          child: Text("Materi",
                               style: TextStyle(
-                                  fontFamily: "Mont",
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700))
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(15.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Nahwu",
-                              style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontWeight: FontWeight.w700)),
-                          SizedBox(
-                              height: MediaQuery.of(context).size.height / 40),
-                          Text("Nahwu adalah bla bla bla ",
-                              style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontWeight: FontWeight.w600))
-                        ],
-                      ),
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 23.0,
+                                  fontFamily: "Mont"))),
                     )
                   ],
                 ),
               ),
-            ),
-              ],
-            )
-          ),
+              Container(
+                height: MediaQuery.of(context).size.height / 4,
+                margin: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height / 55,
+                    left: 13.0,
+                    right: 13.0),
+                child: Card(
+                  elevation: 7.0,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(15.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              radius: 45.0,
+                              backgroundImage:
+                                  AssetImage("assets/image/man.png"),
+                            ),
+                            SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height / 90),
+                            Text("Abdul Malik",
+                                style: TextStyle(
+                                    fontFamily: "Mont",
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700))
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(15.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("Nahwu",
+                                style: TextStyle(
+                                    fontFamily: 'Avenir',
+                                    fontWeight: FontWeight.w700)),
+                            SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height / 40),
+                            Text("Nahwu adalah bla bla bla ",
+                                style: TextStyle(
+                                    fontFamily: 'Avenir',
+                                    fontWeight: FontWeight.w600))
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          )),
           borderRadius: radius,
         ),
       ),
