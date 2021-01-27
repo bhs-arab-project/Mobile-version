@@ -31,7 +31,7 @@ class _LearningState extends State<Learning>
       backgroundColor: Colors.grey[100],
       resizeToAvoidBottomPadding: false,
       body: SingleChildScrollView(
-              child: Container(
+        child: Container(
           child: Column(
             children: [
               Container(
@@ -50,7 +50,7 @@ class _LearningState extends State<Learning>
                     ),
                     Container(
                       margin: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height - 600,
+                          top: MediaQuery.of(context).size.height / 3.7,
                           left: 30,
                           right: 30),
                       height: MediaQuery.of(context).size.height / 7.3,
@@ -106,7 +106,7 @@ class _LearningState extends State<Learning>
                   ],
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height - 790),
+              SizedBox(height: MediaQuery.of(context).size.height / 30),
               ScrollConfiguration(
                 behavior: LearningScroll(),
                 child: Container(
@@ -157,9 +157,11 @@ class _LearningState extends State<Learning>
                                             children: [
                                               Text("SHOROF",
                                                   style: TextStyle(
-                                                      fontWeight: FontWeight.w600,
+                                                      fontWeight:
+                                                          FontWeight.w600,
                                                       fontSize: 20,
-                                                      color: Colors.blueGrey[800],
+                                                      color:
+                                                          Colors.blueGrey[800],
                                                       fontFamily: 'Avenir')),
                                               SizedBox(
                                                 width: MediaQuery.of(context)
@@ -174,7 +176,8 @@ class _LearningState extends State<Learning>
                                                 width: 70,
                                                 decoration: BoxDecoration(
                                                     borderRadius:
-                                                        BorderRadius.circular(20),
+                                                        BorderRadius.circular(
+                                                            20),
                                                     color: Colors.green),
                                                 child: Text("Beginner",
                                                     style: TextStyle(
@@ -217,7 +220,8 @@ class _LearningState extends State<Learning>
                                                 children: [
                                                   Icon(
                                                     Icons.assignment,
-                                                    color: Colors.tealAccent[300],
+                                                    color:
+                                                        Colors.tealAccent[300],
                                                   ),
                                                   Text("10 Materi",
                                                       style: TextStyle(
@@ -226,7 +230,8 @@ class _LearningState extends State<Learning>
                                                           fontSize: 17,
                                                           color: Colors
                                                               .blueGrey[800],
-                                                          fontFamily: 'Avenir')),
+                                                          fontFamily:
+                                                              'Avenir')),
                                                 ],
                                               )),
                                             ],
@@ -310,9 +315,11 @@ class _LearningState extends State<Learning>
                                             children: [
                                               Text("SHOROF",
                                                   style: TextStyle(
-                                                      fontWeight: FontWeight.w600,
+                                                      fontWeight:
+                                                          FontWeight.w600,
                                                       fontSize: 20,
-                                                      color: Colors.blueGrey[800],
+                                                      color:
+                                                          Colors.blueGrey[800],
                                                       fontFamily: 'Avenir')),
                                               SizedBox(
                                                 width: MediaQuery.of(context)
@@ -327,7 +334,8 @@ class _LearningState extends State<Learning>
                                                 width: 70,
                                                 decoration: BoxDecoration(
                                                     borderRadius:
-                                                        BorderRadius.circular(20),
+                                                        BorderRadius.circular(
+                                                            20),
                                                     color: Colors.green),
                                                 child: Text("Beginner",
                                                     style: TextStyle(
@@ -370,7 +378,8 @@ class _LearningState extends State<Learning>
                                                 children: [
                                                   Icon(
                                                     Icons.assignment,
-                                                    color: Colors.tealAccent[300],
+                                                    color:
+                                                        Colors.tealAccent[300],
                                                   ),
                                                   Text("10 Materi",
                                                       style: TextStyle(
@@ -379,7 +388,8 @@ class _LearningState extends State<Learning>
                                                           fontSize: 17,
                                                           color: Colors
                                                               .blueGrey[800],
-                                                          fontFamily: 'Avenir')),
+                                                          fontFamily:
+                                                              'Avenir')),
                                                 ],
                                               )),
                                             ],
@@ -463,9 +473,11 @@ class _LearningState extends State<Learning>
                                             children: [
                                               Text("SHOROF",
                                                   style: TextStyle(
-                                                      fontWeight: FontWeight.w600,
+                                                      fontWeight:
+                                                          FontWeight.w600,
                                                       fontSize: 20,
-                                                      color: Colors.blueGrey[800],
+                                                      color:
+                                                          Colors.blueGrey[800],
                                                       fontFamily: 'Avenir')),
                                               SizedBox(
                                                 width: MediaQuery.of(context)
@@ -480,7 +492,8 @@ class _LearningState extends State<Learning>
                                                 width: 70,
                                                 decoration: BoxDecoration(
                                                     borderRadius:
-                                                        BorderRadius.circular(20),
+                                                        BorderRadius.circular(
+                                                            20),
                                                     color: Colors.green),
                                                 child: Text("Beginner",
                                                     style: TextStyle(
@@ -523,7 +536,8 @@ class _LearningState extends State<Learning>
                                                 children: [
                                                   Icon(
                                                     Icons.assignment,
-                                                    color: Colors.tealAccent[300],
+                                                    color:
+                                                        Colors.tealAccent[300],
                                                   ),
                                                   Text("10 Materi",
                                                       style: TextStyle(
@@ -532,7 +546,8 @@ class _LearningState extends State<Learning>
                                                           fontSize: 17,
                                                           color: Colors
                                                               .blueGrey[800],
-                                                          fontFamily: 'Avenir')),
+                                                          fontFamily:
+                                                              'Avenir')),
                                                 ],
                                               )),
                                             ],
@@ -616,9 +631,11 @@ class _LearningState extends State<Learning>
                                             children: [
                                               Text("SHOROF",
                                                   style: TextStyle(
-                                                      fontWeight: FontWeight.w600,
+                                                      fontWeight:
+                                                          FontWeight.w600,
                                                       fontSize: 20,
-                                                      color: Colors.blueGrey[800],
+                                                      color:
+                                                          Colors.blueGrey[800],
                                                       fontFamily: 'Avenir')),
                                               SizedBox(
                                                 width: MediaQuery.of(context)
@@ -633,7 +650,8 @@ class _LearningState extends State<Learning>
                                                 width: 70,
                                                 decoration: BoxDecoration(
                                                     borderRadius:
-                                                        BorderRadius.circular(20),
+                                                        BorderRadius.circular(
+                                                            20),
                                                     color: Colors.green),
                                                 child: Text("Beginner",
                                                     style: TextStyle(
@@ -676,7 +694,8 @@ class _LearningState extends State<Learning>
                                                 children: [
                                                   Icon(
                                                     Icons.assignment,
-                                                    color: Colors.tealAccent[300],
+                                                    color:
+                                                        Colors.tealAccent[300],
                                                   ),
                                                   Text("10 Materi",
                                                       style: TextStyle(
@@ -685,7 +704,8 @@ class _LearningState extends State<Learning>
                                                           fontSize: 17,
                                                           color: Colors
                                                               .blueGrey[800],
-                                                          fontFamily: 'Avenir')),
+                                                          fontFamily:
+                                                              'Avenir')),
                                                 ],
                                               )),
                                             ],

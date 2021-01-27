@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         routes: {
           // HOME
           '/': (context) => Screen(),
+          '/app': (context) => MyApp(),
           // QUIZ
           // BEGINNER
           '/begconfirm': (context) => Begconfirm(),

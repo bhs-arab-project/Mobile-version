@@ -123,19 +123,21 @@ class FormLogin extends StatelessWidget {
                                 Checkbox(value: false, onChanged: (_) {}),
                                 Text(
                                   "Remember Me",
-                                  style: TextStyle(
-                                    fontSize: 12
-                                  ),
+                                  style: TextStyle(fontSize: 12),
                                 ),
                                 Spacer(
                                   flex: 1,
                                 ),
                                 RaisedButton(
                                   onPressed: () {
-                                  Navigator.pushNamed(context, '/learn');
-                                },
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => MyApp()));
+                                  },
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(80.0)),
+                                      borderRadius:
+                                          BorderRadius.circular(80.0)),
                                   padding: const EdgeInsets.all(0.0),
                                   child: Ink(
                                     decoration: const BoxDecoration(
@@ -145,8 +147,8 @@ class FormLogin extends StatelessWidget {
                                           Colors.black
                                         ],
                                       ),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(80.0)),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(80.0)),
                                     ),
                                     child: Container(
                                       constraints: const BoxConstraints(
@@ -172,12 +174,11 @@ class FormLogin extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                            'Apa Anda Tidak Mempunyai Akun? Daftar disini',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey,
-                            )
-                          ),
+                              'Apa Anda Tidak Mempunyai Akun? Daftar disini',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey,
+                              )),
                         ),
                       ),
                     ],
