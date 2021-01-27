@@ -33,15 +33,11 @@ class MyApp extends StatelessWidget {
           // LEARNING
           // BEGINNER
           '/interlearn': (context) => InterLearn(),
-<<<<<<< HEAD
           // LOGIN
           '/login': (context) => Login(),
-=======
-
           // Mapel
           '/list': (context) => ListMateri(),
           '/belajar': (context) => Pembelajaran(),
->>>>>>> aec3f25fc004df921a8d4a6b15faa8d7d8a2e8b6
         });
   }
 }

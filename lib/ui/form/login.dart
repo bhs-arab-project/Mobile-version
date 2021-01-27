@@ -132,8 +132,8 @@ class FormLogin extends StatelessWidget {
                                 ),
                                 RaisedButton(
                                   onPressed: () {
-                                    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
-                                  },
+                                  Navigator.pushNamed(context, '/learn');
+                                },
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(80.0)),
                                   padding: const EdgeInsets.all(0.0),

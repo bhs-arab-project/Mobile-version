@@ -161,7 +161,7 @@ class SlidingUpPanel extends StatefulWidget {
     this.panelBuilder,
     this.body,
     this.collapsed,
-    this.minHeight = 50.0,
+    this.minHeight = 100.0,
     this.maxHeight = 550.0,
     this.snapPoint,
     this.border,

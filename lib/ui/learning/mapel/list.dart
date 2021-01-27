@@ -41,7 +41,7 @@ class _ListMateriState extends State<ListMateri> {
                         Container(
                           margin: EdgeInsets.only(bottom: 10.0),
                           child: RaisedButton(
-                            onPressed: () {},
+                            onPressed: () {print('di Klick');},
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(15),
@@ -65,75 +65,7 @@ class _ListMateriState extends State<ListMateri> {
                                     Image.asset("assets/icon/beginlearn.png"),
                                 title: Text("pendahuluan"),
                                 trailing: Icon(Icons.keyboard_arrow_right),
-                                onLongPress: () {
-                                  Navigator.pushNamed(context, '/belajar');
-                                },
-                              )),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(bottom: 10.0),
-                          child: RaisedButton(
-                            onPressed: () {},
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15),
-                              bottomLeft: Radius.circular(15),
-                              bottomRight: Radius.circular(15),
-                            )),
-                            padding: EdgeInsets.all(0.0),
-                            child: Ink(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(15),
-                                    topRight: Radius.circular(15),
-                                    bottomLeft: Radius.circular(15),
-                                    bottomRight: Radius.circular(15),
-                                  )),
-                              child: Container(
-                                  child: ListTile(
-                                leading:
-                                    Image.asset("assets/icon/beginlearn.png"),
-                                title: Text("pendahuluan"),
-                                trailing: Icon(Icons.keyboard_arrow_right),
-                                onLongPress: () {
-                                  Navigator.pushNamed(context, '/belajar');
-                                },
-                              )),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(bottom: 10.0),
-                          child: RaisedButton(
-                            onPressed: () {},
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15),
-                              bottomLeft: Radius.circular(15),
-                              bottomRight: Radius.circular(15),
-                            )),
-                            padding: EdgeInsets.all(0.0),
-                            child: Ink(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(15),
-                                    topRight: Radius.circular(15),
-                                    bottomLeft: Radius.circular(15),
-                                    bottomRight: Radius.circular(15),
-                                  )),
-                              child: Container(
-                                  child: ListTile(
-                                leading:
-                                    Image.asset("assets/icon/beginlearn.png"),
-                                title: Text("pendahuluan"),
-                                trailing: Icon(Icons.keyboard_arrow_right),
-                                onLongPress: () {
+                                onTap: () {
                                   Navigator.pushNamed(context, '/belajar');
                                 },
                               )),

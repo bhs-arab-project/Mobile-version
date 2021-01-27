@@ -2,7 +2,6 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:bahasa_arab/ui/uis.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:bahasa_arab/homepage.dart';
 
 void main() {
   runApp(MaterialApp(
