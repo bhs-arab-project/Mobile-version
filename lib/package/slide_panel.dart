@@ -1,3 +1,11 @@
+/*
+Name: Akshath Jain
+Date: 3/18/2019 - 4/2/2020
+Purpose: Defines the sliding_up_panel widget
+Copyright: © 2020, Akshath Jain. All rights reserved.
+Licensing: More information can be found here: https://github.com/akshathjain/sliding_up_panel/blob/master/LICENSE
+*/
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -53,7 +61,7 @@ class SlidingUpPanel extends StatefulWidget {
   final double minHeight;
 
   /// The height of the sliding panel when fully open.
-  // final double maxHeight;
+  final double maxHeight;
 
   /// A point between [minHeight] and [maxHeight] that the panel snaps to
   /// while animating. A fast swipe on the panel will disregard this point
@@ -158,14 +166,14 @@ class SlidingUpPanel extends StatefulWidget {
       this.body,
       this.collapsed,
       this.minHeight = 70.0,
-      // this.maxHeight = 530.0,
+      this.maxHeight = 500.0,
       this.snapPoint,
       this.border,
       this.borderRadius,
       this.boxShadow = const <BoxShadow>[
         BoxShadow(
-          blurRadius: 10.0,
-          color: Colors.black12,
+          blurRadius: 8.0,
+          color: Color.fromRGBO(0, 0, 0, 0.25),
         )
       ],
       this.color = Colors.white,
@@ -256,7 +264,7 @@ class _SlidingUpPanelState extends State<SlidingUpPanel>
                   );
                 },
                 child: Container(
-                  height: MediaQuery.of(context).size.height / 3,
+                  height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                   child: widget.body,
                 ),
@@ -304,10 +312,9 @@ class _SlidingUpPanelState extends State<SlidingUpPanel>
                   animation: _ac,
                   builder: (context, child) {
                     return Container(
-                      height: _ac.value *
-                              (MediaQuery.of(context).size.height / 1.6 -
-                                  widget.minHeight) +
-                          widget.minHeight,
+                      height:
+                          _ac.value * (widget.maxHeight - widget.minHeight) +
+                              widget.minHeight,
                       margin: widget.margin,
                       padding: widget.padding,
                       decoration: widget.renderPanelSheet
@@ -315,7 +322,7 @@ class _SlidingUpPanelState extends State<SlidingUpPanel>
                               border: widget.border,
                               borderRadius: widget.borderRadius,
                               boxShadow: widget.boxShadow,
-                              color: widget.color.withOpacity(0.3),
+                              color: widget.color,
                             )
                           : null,
                       child: child,
@@ -339,7 +346,7 @@ class _SlidingUpPanelState extends State<SlidingUpPanel>
                                   ? widget.padding.horizontal
                                   : 0),
                           child: Container(
-                            height: MediaQuery.of(context).size.height / 1.6,
+                            height: widget.maxHeight,
                             child: widget.panel != null
                                 ? widget.panel
                                 : widget.panelBuilder(_sc),
@@ -420,11 +427,11 @@ class _SlidingUpPanelState extends State<SlidingUpPanel>
   double _getParallax() {
     if (widget.slideDirection == SlideDirection.UP)
       return -_ac.value *
-          (MediaQuery.of(context).size.height / 1.6 - widget.minHeight) *
+          (widget.maxHeight - widget.minHeight) *
           widget.parallaxOffset;
     else
       return _ac.value *
-          (MediaQuery.of(context).size.height / 1.6 - widget.minHeight) *
+          (widget.maxHeight - widget.minHeight) *
           widget.parallaxOffset;
   }
 
@@ -463,11 +470,9 @@ class _SlidingUpPanelState extends State<SlidingUpPanel>
     // only slide the panel if scrolling is not enabled
     if (!_scrollingEnabled) {
       if (widget.slideDirection == SlideDirection.UP)
-        _ac.value -=
-            dy / (MediaQuery.of(context).size.height / 1.6 - widget.minHeight);
+        _ac.value -= dy / (widget.maxHeight - widget.minHeight);
       else
-        _ac.value +=
-            dy / (MediaQuery.of(context).size.height / 1.6 - widget.minHeight);
+        _ac.value += dy / (widget.maxHeight - widget.minHeight);
     }
 
     // if the panel is open and the user hasn't scrolled, we need to determine
@@ -497,8 +502,8 @@ class _SlidingUpPanelState extends State<SlidingUpPanel>
     if (_isPanelOpen && _scrollingEnabled) return;
 
     //check if the velocity is sufficient to constitute fling to end
-    double visualVelocity = -v.pixelsPerSecond.dy /
-        (MediaQuery.of(context).size.height / 1.6 - widget.minHeight);
+    double visualVelocity =
+        -v.pixelsPerSecond.dy / (widget.maxHeight - widget.minHeight);
 
     // reverse visual velocity to account for slide direction
     if (widget.slideDirection == SlideDirection.DOWN)
