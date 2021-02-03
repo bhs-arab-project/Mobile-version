@@ -33,10 +33,18 @@ class _PembelajaranState extends State<Pembelajaran> {
       backgroundColor: Colors.blue[300],
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_outlined),
+            color: Colors.white,
+            onPressed: () {
+              print('Balik Ke List');
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ListMateri()));
+            }),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text("Pendahuluan"),
+        title: Text("Pendahuluan", style: TextStyle(color: Colors.white)),
       ),
       body: SafeArea(
         child: Container(

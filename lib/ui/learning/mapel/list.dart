@@ -19,10 +19,18 @@ class _ListMateriState extends State<ListMateri> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_outlined),
+            color: Colors.white,
+            onPressed: () {
+              print('Balik Ke Daftar');
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Screen()));
+            }),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text("Materi"),
+        title: Text("Materi", style: TextStyle(color: Colors.white)),
       ),
       body: Container(
         padding: EdgeInsets.only(top: 50),
@@ -43,8 +51,11 @@ class _ListMateriState extends State<ListMateri> {
                         margin: EdgeInsets.only(bottom: 10.0),
                         child: RaisedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/belajar');
-                            print('di Klick');
+                            print('Materi');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Pembelajaran()));
                           },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.only(
@@ -68,7 +79,8 @@ class _ListMateriState extends State<ListMateri> {
                               leading: Image.asset("assets/icon/beginlearn.png",
                                   width:
                                       MediaQuery.of(context).size.width / 13),
-                              title: Text("pendahuluan"),
+                              title: Text("pendahuluan",
+                                  style: TextStyle(fontFamily: 'Mont')),
                               trailing: Icon(Icons.keyboard_arrow_right),
                               // onTap: () {
                               // Navigator.pushNamed(context, '/belajar');
@@ -99,64 +111,61 @@ class _ListMateriState extends State<ListMateri> {
               ],
             ),
           ),
-          body: Center(
-              child: Column(
+          body: Column(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height / 4,
-                margin: EdgeInsets.only(top: 10, left: 5.0, right: 5.0),
-                child: Card(
-                  elevation: 7.0,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0)),
-                  child: Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(15.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              radius: 45.0,
-                              backgroundImage:
-                                  AssetImage("assets/image/man.png"),
-                            ),
-                            SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height / 90),
-                            Text("Abdul Malik",
-                                style: TextStyle(
-                                    fontFamily: "Mont",
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w700))
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(15.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Nahwu",
-                                style: TextStyle(
-                                    fontFamily: 'Avenir',
-                                    fontWeight: FontWeight.w700)),
-                            SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height / 40),
-                            Text("Nahwu adalah bla bla bla ",
-                                style: TextStyle(
-                                    fontFamily: 'Avenir',
-                                    fontWeight: FontWeight.w600))
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
+                  child:
+                      Text("dsdasdasdasdasdadasdasdsddasdasasdasdasdasdasd")),
             ],
-          )),
+          ),
+          // Container(
+          //   height: MediaQuery.of(context).size.height / 4,
+          //   margin: EdgeInsets.only(top: 10, left: 5.0, right: 5.0),
+          //   padding: EdgeInsets.all(10.0),
+          //   child: Row(
+          //       children: [
+          //         Container(
+          //           padding: EdgeInsets.all(15.0),
+          //           child: Column(
+          //             mainAxisAlignment: MainAxisAlignment.center,
+          //             children: [
+          //               CircleAvatar(
+          //                 radius: 45.0,
+          //                 backgroundImage: AssetImage("assets/image/man.png"),
+          //               ),
+          //               SizedBox(
+          //                   height: MediaQuery.of(context).size.height / 90),
+          //               Text("Abdul Malik",
+          //                   style: TextStyle(
+          //                       fontFamily: "Mont",
+          //                       fontSize: 18,
+          //                       fontWeight: FontWeight.w700))
+          //             ],
+          //           ),
+          //         ),
+          //         Container(
+          //           padding: EdgeInsets.all(15.0),
+          //           child: Column(
+          //             mainAxisAlignment: MainAxisAlignment.center,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Text("Nahwu",
+          //                   style: TextStyle(
+          //                       fontFamily: 'Avenir',
+          //                       fontWeight: FontWeight.w700)),
+          //               SizedBox(
+          //                   height: MediaQuery.of(context).size.height / 40),
+          //               Text(
+          //                   "Nahwu adalah bla bla bla ddsadsadasdasdad as dasfasfasdgksdgndzfghsd hgjdbghsd s",
+          //                   style: TextStyle(
+          //                       fontFamily: 'Avenir',
+          //                       fontWeight: FontWeight.w600))
+          //             ],
+          //           ),
+          //         )
+          //       ],
+          //     ),
+          // ),
           borderRadius: radius,
         ),
       ),

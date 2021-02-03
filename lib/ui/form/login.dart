@@ -130,10 +130,11 @@ class FormLogin extends StatelessWidget {
                                 ),
                                 RaisedButton(
                                   onPressed: () {
+                                    print('Masuk cok');
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => MyApp()));
+                                            builder: (context) => Screen()));
                                   },
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
@@ -169,17 +170,39 @@ class FormLogin extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 25, bottom: 10),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                              'Apa Anda Tidak Mempunyai Akun? Daftar disini',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.grey,
-                              )),
-                        ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 25, bottom: 10),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text('Apa Anda Tidak Mempunyai Akun?',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.grey,
+                                  )),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 25, bottom: 10),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Register()));
+                                },
+                                child: Text('daftar disini',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.grey,
+                                    )),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
