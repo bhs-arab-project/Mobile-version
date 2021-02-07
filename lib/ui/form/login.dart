@@ -34,6 +34,8 @@ class FormLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Expanded(
       flex: 1,
       child: Stack(
@@ -130,7 +132,7 @@ class FormLogin extends StatelessWidget {
                                 ),
                                 RaisedButton(
                                   onPressed: () {
-                                    print('Masuk cok');
+                                    print('Berhasil masuk');
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(

@@ -6,6 +6,22 @@ class ListMateri extends StatefulWidget {
 }
 
 class _ListMateriState extends State<ListMateri> {
+  List desc;
+
+  void dataMateri() {
+    getMateri(context).then((value) {
+      setState(() {
+        desc = value;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    dataMateri();
+  }
+
   @override
   Widget build(BuildContext context) {
     BorderRadiusGeometry radius = BorderRadius.only(
@@ -111,12 +127,16 @@ class _ListMateriState extends State<ListMateri> {
               ],
             ),
           ),
-          body: Column(
-            children: [
-              Container(
-                  child:
-                      Text("dsdasdasdasdasdadasdasdsddasdasasdasdasdasdasd")),
-            ],
+          body: ListView.builder(
+            itemCount: desc.length,
+            itemBuilder: (context, i) {
+              return Container(
+                  child: Text(desc[i].deskripsi,
+                      style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontSize: 13.0,
+                          fontWeight: FontWeight.w500)));
+            },
           ),
           // Container(
           //   height: MediaQuery.of(context).size.height / 4,

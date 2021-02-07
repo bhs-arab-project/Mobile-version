@@ -1,4 +1,4 @@
-import 'package:bahasa_arab/constants.dart';
+import 'dart:async';
 import 'package:bahasa_arab/package/slide_panel.dart';
 import 'package:bahasa_arab/package/text_field.dart';
 import 'package:bahasa_arab/viewModels/viewModels.dart';
@@ -10,7 +10,6 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:math';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';

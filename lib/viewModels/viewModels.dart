@@ -9,3 +9,5 @@ part 'view_kosa_kata_begin_models.dart';
 part 'view_intermediate_models.dart';
 
 part 'view_advance_models.dart';
+
+part 'view_pelajaran_models.dart';
