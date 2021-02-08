@@ -15,25 +15,33 @@ class Account extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage('assets/image/man.png'),
-                  radius: 60.0,
+                  backgroundColor: Colors.grey[300],
+                  radius: 50.0,
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('assets/image/man.png'),
+                    radius: 45.0,
+                  ),
                 ),
+                // ConstrainedBox(
+                //   constraints: BoxConstraints.expand(),
+                //   child: FlatButton(onPressed: () {},
+                //     child: Image.asset('assets/image/man.png'))),
                 SizedBox(
                   height: 15.0,
                 ),
-                Text("Wahyu",
+                Text("Webeeh10",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 20.0,
                         fontFamily: 'Avenir',
-                        fontWeight: FontWeight.bold)),
+                        fontWeight: FontWeight.w600)),
                 SizedBox(height: 10),
                 Text("Pelajar",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 15.0,
                         fontFamily: 'Avenir',
-                        fontWeight: FontWeight.bold))
+                        fontWeight: FontWeight.w600))
               ],
             ),
           ),
@@ -68,11 +76,7 @@ class Account extends StatelessWidget {
             ListTile(
               title: Text("Wahyu321@gmail.com",
                   style: TextStyle(color: Colors.black)),
-              subtitle: Text("Email"),
-            ),
-            ListTile(
-              title: Text("Wahyu", style: TextStyle(color: Colors.black)),
-              subtitle: Text("Name"),
+              subtitle: Text("email"),
             ),
             ListTile(
               subtitle: Text("selengkapnya"),
@@ -87,13 +91,57 @@ class Account extends StatelessWidget {
                       ),
                     ),
                     child: ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                scrollable: true,
+                                title: Text('Edit Profile'),
+                                content: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Form(
+                                    child: Column(
+                                      children: <Widget>[
+                                        TextFormField(
+                                          decoration: InputDecoration(
+                                            labelText: 'nama depan',
+                                          ),
+                                        ),
+                                        TextFormField(
+                                          decoration: InputDecoration(
+                                            labelText: 'nama belakang',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                actions: [
+                                  RaisedButton(
+                                      color: Colors.red,
+                                      child: Text("Batal",
+                                          style:
+                                              TextStyle(color: Colors.white)),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      }),
+                                  RaisedButton(
+                                      color: Colors.green,
+                                      child: Text("Simpan",
+                                          style:
+                                              TextStyle(color: Colors.white)),
+                                      onPressed: () {})
+                                ],
+                              );
+                            });
+                      },
                       leading: Icon(
                         Icons.mode_edit,
                         color: Colors.blueAccent,
                       ),
                       title: Text(
-                        "Edit Your Account",
+                        "Edit Profile",
                         style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -103,13 +151,18 @@ class Account extends StatelessWidget {
                   ),
                   Container(
                     child: ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Sertifikat()));
+                      },
                       leading: Icon(
-                        Icons.donut_large,
+                        Icons.book,
                         color: Colors.blueAccent,
                       ),
                       title: Text(
-                        "My Progress",
+                        "Sertifikat",
                         style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,

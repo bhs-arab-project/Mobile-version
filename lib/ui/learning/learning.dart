@@ -20,6 +20,10 @@ class _LearningState extends State<Learning>
     });
   }
 
+  void hapusMateri(String id) async {
+    await deleteMateri(id);
+  }
+
   @override
   void initState() {
     _animController =
@@ -193,19 +197,71 @@ class _LearningState extends State<Learning>
                                                             CrossAxisAlignment
                                                                 .start,
                                                         children: [
-                                                          Text(
-                                                              materiPelajaran[i]
-                                                                  .pelajaran,
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .black,
-                                                                  fontFamily:
-                                                                      'Mont',
-                                                                  fontSize:
-                                                                      18.5,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w800)),
+                                                          Row(children: [
+                                                            Text(
+                                                                materiPelajaran[
+                                                                        i]
+                                                                    .pelajaran,
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontFamily:
+                                                                        'Mont',
+                                                                    fontSize:
+                                                                        18.5,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w800)),
+                                                            FlatButton(
+                                                              onPressed: () {
+                                                                showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (context) {
+                                                                      return AlertDialog(
+                                                                        title: Text(
+                                                                            "Pemberitahuan"),
+                                                                        content:
+                                                                            Text("Anda yakin ingin menghapus pelajran ${materiPelajaran[i].pelajaran}?"),
+                                                                        actions: <
+                                                                            Widget>[
+                                                                          FlatButton(
+                                                                            child:
+                                                                                Text("Iya"),
+                                                                            onPressed:
+                                                                                () {
+                                                                              Navigator.pop(context);
+                                                                              hapusMateri(materiPelajaran[i].id.toString());
+                                                                            },
+                                                                          ),
+                                                                          FlatButton(
+                                                                            child:
+                                                                                Text("Tidak"),
+                                                                            onPressed:
+                                                                                () {
+                                                                              Navigator.pop(context);
+                                                                            },
+                                                                          )
+                                                                        ],
+                                                                      );
+                                                                    });
+                                                              },
+                                                              child: Text(
+                                                                "Hapus",
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .red,
+                                                                    fontFamily:
+                                                                        'Mont',
+                                                                    fontSize:
+                                                                        18.5,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w800),
+                                                              ),
+                                                            ),
+                                                          ]),
                                                           SizedBox(height: 20),
                                                           Text("Pengajar:",
                                                               style: TextStyle(
@@ -340,3 +396,12 @@ class LearningScroll extends ScrollBehavior {
     return child;
   }
 }
+
+// .then((isSuccess) {
+//                                                                                 if (isSuccess) {
+//                                                                                   setState(() {});
+//                                                                                   Scaffold.of(this.context).showSnackBar(SnackBar(content: Text("Delete data success")));
+//                                                                                 } else {
+//                                                                                   Scaffold.of(this.context).showSnackBar(SnackBar(content: Text("Delete data failed")));
+//                                                                                 }
+//                                                                               })

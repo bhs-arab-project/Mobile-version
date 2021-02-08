@@ -1,4 +1,4 @@
-import 'dart:async';
+import 'package:bahasa_arab/package/flutter_animation_progress_bar.dart';
 import 'package:bahasa_arab/package/slide_panel.dart';
 import 'package:bahasa_arab/package/text_field.dart';
 import 'package:bahasa_arab/viewModels/viewModels.dart';
@@ -41,6 +41,9 @@ part 'learning/intermediate/inter_learn.dart';
 part 'learning/advance/advance_learn.dart';
 
 // Account
-part 'account/account.dart';
+part 'account/user.dart';
+part 'account/button/edit_account.dart';
+part 'account/button/progres.dart';
+part 'account/button/sertifikat.dart';
 part 'form/login.dart';
 part 'form/register.dart';
