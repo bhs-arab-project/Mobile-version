@@ -34,7 +34,7 @@ class _PembelajaranState extends State<Pembelajaran> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios_outlined),
+            icon: Icon(Icons.arrow_back_ios),
             color: Colors.white,
             onPressed: () {
               print('Balik Ke List');

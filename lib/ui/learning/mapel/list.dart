@@ -36,7 +36,7 @@ class _ListMateriState extends State<ListMateri> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios_outlined),
+            icon: Icon(Icons.arrow_back_ios),
             color: Colors.white,
             onPressed: () {
               print('Balik Ke Daftar');

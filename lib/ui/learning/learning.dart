@@ -20,8 +20,12 @@ class _LearningState extends State<Learning>
     });
   }
 
+  // void hapusMateri(String id) async {
+  //   await deleteMateri(id);
+  // }
+
   void hapusMateri(String id) async {
-    await deleteMateri(id);
+    var hapus = await deleteMateri(id, context);
   }
 
   @override
@@ -223,7 +227,7 @@ class _LearningState extends State<Learning>
                                                                         title: Text(
                                                                             "Pemberitahuan"),
                                                                         content:
-                                                                            Text("Anda yakin ingin menghapus pelajran ${materiPelajaran[i].pelajaran}?"),
+                                                                            Text("Anda yakin ingin menghapus pelajaran ${materiPelajaran[i].pelajaran}?"),
                                                                         actions: <
                                                                             Widget>[
                                                                           FlatButton(

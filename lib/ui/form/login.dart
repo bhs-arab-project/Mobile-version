@@ -102,30 +102,40 @@ class FormLogin extends StatelessWidget {
                           labelStyle: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20, bottom: 5, right: 15.0),
-                        child: Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            "! Forgot Password",
-                            style: TextStyle(
-                              color: Colors.red[300],
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(
+                      //       top: 20, bottom: 5, right: 15.0),
+                      //   child: Align(
+                      //     alignment: Alignment.bottomRight,
+                      //     child: Text(
+                      //       "! Forgot Password",
+                      //       style: TextStyle(
+                      //         color: Colors.red[300],
+                      //         fontWeight: FontWeight.bold,
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                       Container(
-                        margin: EdgeInsets.only(top: 10, right: 5),
+                        margin: EdgeInsets.only(top: 30.0, right: 5),
                         child: Column(
                           children: [
                             Row(
                               children: [
-                                Checkbox(value: false, onChanged: (_) {}),
-                                Text(
-                                  "Remember Me",
-                                  style: TextStyle(fontSize: 12),
+                                // Checkbox(value: false, onChanged: (_) {}),
+                                // Text(
+                                //   "Remember Me",
+                                //   style: TextStyle(fontSize: 12),
+                                // ),
+                                Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: Text(
+                                    "! Forgot Password",
+                                    style: TextStyle(
+                                      color: Colors.red[300],
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ),
                                 Spacer(
                                   flex: 1,
@@ -189,21 +199,35 @@ class FormLogin extends StatelessWidget {
                             padding: EdgeInsets.only(top: 25, bottom: 10),
                             child: Align(
                               alignment: Alignment.center,
-                              child: TextButton(
-                                onPressed: () {
+                              child: InkWell(
+                                child: Text(" daftar disini",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.grey,
+                                    )),
+                                onTap: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => Register()));
                                 },
-                                child: Text('daftar disini',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.grey,
-                                    )),
                               ),
                             ),
                           ),
+                          // TextBu
+                          // TextButton(
+                          //       onPressed: () {
+                          //         Navigator.push(
+                          //             context,
+                          //             MaterialPageRoute(
+                          //                 builder: (context) => Register()));
+                          //       },
+                          //       child: Text('daftar disini',
+                          //           style: TextStyle(
+                          //             fontSize: 12,
+                          //             color: Colors.grey,
+                          //           )),
+                          //     ),
                         ],
                       ),
                     ],

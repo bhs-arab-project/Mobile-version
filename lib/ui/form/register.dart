@@ -20,7 +20,9 @@ class ContentBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: [],
+      children: [
+        SignUp()
+      ],
     );
   }
 }
@@ -147,12 +149,14 @@ class SignUp extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(10.0),
+                      Row(
+                        children: [
+                          Padding(
+                        padding: EdgeInsets.only(top:20.0, bottom: 10.0),
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                            'Apa anda sudah mempunyai akun? klik disini',
+                            'Apa anda sudah mempunyai akun?',
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.grey
@@ -160,6 +164,27 @@ class SignUp extends StatelessWidget {
                           ),
                         ),
                       ),
+                      Padding(
+                            padding: EdgeInsets.only(top:20.0, bottom: 10.0),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: InkWell(
+                                child: Text(" klik disini",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.grey,
+                                    )),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Login()));
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ),

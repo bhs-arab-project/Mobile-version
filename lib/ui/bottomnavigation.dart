@@ -23,8 +23,8 @@ class _ScreenState extends State<Screen> {
       bottomNavigationBar: FFNavigationBar(
         theme: FFNavigationBarTheme(
             barBackgroundColor: Colors.white,
-            selectedItemBorderColor: Colors.yellow[700],
-            selectedItemBackgroundColor: Colors.yellow[700],
+            selectedItemBorderColor: Colors.blue[400],
+            selectedItemBackgroundColor: Colors.blue[400],
             selectedItemIconColor: Colors.white,
             selectedItemLabelColor: Colors.black,
             barHeight: 70),
