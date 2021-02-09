@@ -1,17 +1,20 @@
 part of '../../uis.dart';
 
 class ListMateri extends StatefulWidget {
+  final String id;
+
+  ListMateri({this.id});
   @override
   _ListMateriState createState() => _ListMateriState();
 }
 
 class _ListMateriState extends State<ListMateri> {
-  List desc;
+  Map<String, dynamic> babSingle;
 
-  void dataMateri() {
-    getMateri(context).then((value) {
+  void listMateri() {
+    getSingleMateri(widget.id).then((value) {
       setState(() {
-        desc = value;
+        babSingle = value;
       });
     });
   }
@@ -19,7 +22,7 @@ class _ListMateriState extends State<ListMateri> {
   @override
   void initState() {
     super.initState();
-    dataMateri();
+    listMateri();
   }
 
   @override
@@ -127,11 +130,15 @@ class _ListMateriState extends State<ListMateri> {
               ],
             ),
           ),
-          body: ListView.builder(
-            itemCount: desc.length,
+          body:
+              // babSingle == null
+              //     ? Text()
+              //     :
+              ListView.builder(
+            // itemCount: babSingle.length,
             itemBuilder: (context, i) {
               return Container(
-                  child: Text(desc[i].deskripsi,
+                  child: Text("babSingle[i].deskripsi",
                       style: TextStyle(
                           fontFamily: 'Roboto',
                           fontSize: 13.0,

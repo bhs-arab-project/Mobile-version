@@ -45,7 +45,7 @@ class FormLogin extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white10,
               image: DecorationImage(
-                image: AssetImage('assets/image/launcher.png'),
+                image: AssetImage('assets/image/icon2.png'),
                 fit: BoxFit.cover,
               ),
             ),

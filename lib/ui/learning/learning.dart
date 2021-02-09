@@ -12,17 +12,48 @@ class _LearningState extends State<Learning>
   Animation<double> _animation;
   TextEditingController filter = TextEditingController();
 
-  void listMateri() {
-    getMateri(context).then((value) {
-      setState(() {
-        materiPelajaran = value;
-      });
-    });
-  }
+  // void listMateri() {
+  //   getAllMateri(context).then((value) {
+  //     setState(() {
+  //       materiPelajaran = value;
+  //     });
+  //   });
+  // }
 
   // void hapusMateri(String id) async {
   //   await deleteMateri(id);
   // }
+
+  Future<void> _getMateri(BuildContext context) async {
+    try {
+      final http.Response response =
+          await http.get("https://data-beta.herokuapp.com/api/pelajaran");
+      final _cekMateri = json.decode(response.body);
+      setState(() {
+        materiPelajaran = _cekMateri;
+      });
+      if (response.statusCode == 200) {
+        final snackbar = SnackBar(
+          duration: Duration(milliseconds: 3000),
+          backgroundColor: Colors.green,
+          content: Text("Berhasil memuat materi"),
+        );
+        Scaffold.of(context).showSnackBar(snackbar);
+        print("Berhasil memuat materi");
+      } else {
+        final snackbar = SnackBar(
+          duration: Duration(milliseconds: 3000),
+          backgroundColor: Colors.red,
+          content: Text("Gagal memuat materi"),
+        );
+        Scaffold.of(context).showSnackBar(snackbar);
+        print("Gagal memuat materi");
+      }
+    } catch (e) {
+      print("Error pada catch $e");
+      return null;
+    }
+  }
 
   void hapusMateri(String id) async {
     var hapus = await deleteMateri(id, context);
@@ -37,7 +68,7 @@ class _LearningState extends State<Learning>
     _animation = Tween<double>(begin: 0.0, end: 1.0).animate(curve);
     _animController.forward();
     super.initState();
-    listMateri();
+    // listMateri();
   }
 
   @override
@@ -61,8 +92,7 @@ class _LearningState extends State<Learning>
                             bottomLeft: Radius.circular(40),
                             bottomRight: Radius.circular(40)),
                         image: DecorationImage(
-                            image: AssetImage(
-                                "assets/image/homescreenlearning.png"),
+                            image: AssetImage("assets/image/icon1.png"),
                             fit: BoxFit.cover)),
                   ),
                   Container(
@@ -154,11 +184,14 @@ class _LearningState extends State<Learning>
                                       child: RaisedButton(
                                         onPressed: () {
                                           print('Daftar materi');
-                                          Navigator.push(
-                                              context,
+                                          Navigator.push(context,
                                               MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ListMateri()));
+                                                  builder: (context) {
+                                            return ListMateri(
+                                                id: materiPelajaran[i]
+                                                    .id
+                                                    .toString());
+                                          }));
                                         },
                                         shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.only(

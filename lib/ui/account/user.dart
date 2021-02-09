@@ -22,10 +22,6 @@ class Account extends StatelessWidget {
                     radius: 45.0,
                   ),
                 ),
-                // ConstrainedBox(
-                //   constraints: BoxConstraints.expand(),
-                //   child: FlatButton(onPressed: () {},
-                //     child: Image.asset('assets/image/man.png'))),
                 SizedBox(
                   height: 15.0,
                 ),
@@ -71,8 +67,9 @@ class Account extends StatelessWidget {
       ),
       ScrollConfiguration(
         behavior: UserScroll(),
-              child: Container(
-          margin: EdgeInsets.only(top: MediaQuery.of(context).size.height / 2.3),
+        child: Container(
+          margin:
+              EdgeInsets.only(top: MediaQuery.of(context).size.height / 2.3),
           child: ListView(
             children: [
               ListTile(

@@ -26,7 +26,7 @@ class _SphScreenState extends State<SphScreen> with TickerProviderStateMixin {
         width: 100,
         height: 100,
         child: AnimatedSplashScreen(
-          splash: Image.asset("assets/image/launcher.png"),
+          splash: Image.asset("assets/image/icon2.png"),
           nextScreen: Login(),
           splashIconSize: 300,
           curve: Curves.fastOutSlowIn,

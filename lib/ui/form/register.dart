@@ -20,9 +20,7 @@ class ContentBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: [
-        SignUp()
-      ],
+      children: [SignUp()],
     );
   }
 }
@@ -43,7 +41,7 @@ class SignUp extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white10,
               image: DecorationImage(
-                image: AssetImage('assets/image/launcher.png'),
+                image: AssetImage('assets/image/icon2.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -152,20 +150,18 @@ class SignUp extends StatelessWidget {
                       Row(
                         children: [
                           Padding(
-                        padding: EdgeInsets.only(top:20.0, bottom: 10.0),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Apa anda sudah mempunyai akun?',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey
+                            padding: EdgeInsets.only(top: 20.0, bottom: 10.0),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                'Apa anda sudah mempunyai akun?',
+                                style:
+                                    TextStyle(fontSize: 12, color: Colors.grey),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                      Padding(
-                            padding: EdgeInsets.only(top:20.0, bottom: 10.0),
+                          Padding(
+                            padding: EdgeInsets.only(top: 20.0, bottom: 10.0),
                             child: Align(
                               alignment: Alignment.center,
                               child: InkWell(
