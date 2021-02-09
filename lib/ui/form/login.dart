@@ -27,10 +27,33 @@ class ContentArea extends StatelessWidget {
   }
 }
 
-class FormLogin extends StatelessWidget {
+class FormLogin extends StatefulWidget {
   const FormLogin({
     Key key,
   }) : super(key: key);
+
+  @override
+  _FormLoginState createState() => _FormLoginState();
+}
+
+class _FormLoginState extends State<FormLogin> {
+  
+  TextEditingController user = TextEditingController();
+  TextEditingController pass = TextEditingController();
+
+  Future login() async{
+    var response = await http.post('https://data-beta.herokuapp.com/api/user',
+      body: {
+      "username" : user.text,
+      "password" : pass.text
+      }
+    );
+    var msg = json.decode(response.body);
+    if(msg == "OKK") {
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>Learning()));
+    }
+    
+  }
 
   @override
   Widget build(BuildContext context) {
