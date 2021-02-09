@@ -135,10 +135,10 @@ class _ListMateriState extends State<ListMateri> {
               //     ? Text()
               //     :
               ListView.builder(
-            // itemCount: babSingle.length,
+            // itemCount: desc.length,
             itemBuilder: (context, i) {
               return Container(
-                  child: Text("babSingle[i].deskripsi",
+                  child: Text("desc[i].deskripsi",
                       style: TextStyle(
                           fontFamily: 'Roboto',
                           fontSize: 13.0,

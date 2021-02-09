@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'dart:js';
 import 'package:bahasa_arab/package/flutter_animation_progress_bar.dart';
 import 'package:bahasa_arab/package/slide_panel.dart';
 import 'package:bahasa_arab/package/text_field.dart';
@@ -26,17 +26,17 @@ part 'size_helpers.dart';
 // Quiz
 // part 'quiz/quiz.dart';
 // Beginner
-part 'quiz/beginner/beginner.dart';
+// part 'quiz/beginner/beginner.dart';
 part 'quiz/beginner/beginner_quiz.dart';
 part 'quiz/beginner/beginner_confirm.dart';
 // Intermediate
-part 'quiz/intermediate/intermediate.dart';
+// part 'quiz/intermediate/intermediate.dart';
 part 'quiz/intermediate/intermediate_confirm.dart';
-part 'quiz/intermediate/q_brain.dart';
+// part 'quiz/intermediate/q_brain.dart';
 // Advance
 part 'quiz/advance/advance_confirm.dart';
 part 'quiz/advance/advance_session.dart';
-part 'quiz/advance/advance.dart';
+// part 'quiz/advance/advance.dart';
 
 // Learning
 part 'learning/learning.dart';

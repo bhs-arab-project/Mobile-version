@@ -23,14 +23,14 @@ class MyApp extends StatelessWidget {
           // QUIZ
           // BEGINNER
           '/begconfirm': (context) => Begconfirm(),
-          '/beginner': (context) => Beginner(),
+          // '/beginner': (context) => Beginner(),
           // INTERMEDIATE
           '/inconfirm': (context) => Inconfirm(),
-          '/intermediate': (context) => Intermediate(),
+          // '/intermediate': (context) => Intermediate(),
           // ADVANCE
           '/inadvance': (context) => Inadvance(),
           '/advsession': (context) => Advsession(),
-          '/advance': (context) => Advance(),
+          // '/advance': (context) => Advance(),
           // LEARNING
           // BEGINNER
           '/interlearn': (context) => InterLearn(),

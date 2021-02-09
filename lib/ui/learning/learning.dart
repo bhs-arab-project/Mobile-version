@@ -12,7 +12,7 @@ class _LearningState extends State<Learning>
   Animation<double> _animation;
   TextEditingController filter = TextEditingController();
 
-  // void listMateri() {
+  // void listMateri(BuildContext context) {
   //   getAllMateri(context).then((value) {
   //     setState(() {
   //       materiPelajaran = value;
@@ -20,11 +20,7 @@ class _LearningState extends State<Learning>
   //   });
   // }
 
-  // void hapusMateri(String id) async {
-  //   await deleteMateri(id);
-  // }
-
-  Future<void> _getMateri(BuildContext context) async {
+  Future<void> getAllMateri(BuildContext context) async {
     try {
       final http.Response response =
           await http.get("https://data-beta.herokuapp.com/api/pelajaran");
@@ -55,7 +51,13 @@ class _LearningState extends State<Learning>
     }
   }
 
-  void hapusMateri(String id) async {
+  Future<void> refreshMateri() async {
+    setState(() {
+      materiPelajaran = getAllMateri();
+    });
+  }
+
+  void hapusMateri(String id, BuildContext context) async {
     var hapus = await deleteMateri(id, context);
   }
 
@@ -269,7 +271,7 @@ class _LearningState extends State<Learning>
                                                                             onPressed:
                                                                                 () {
                                                                               Navigator.pop(context);
-                                                                              hapusMateri(materiPelajaran[i].id.toString());
+                                                                              hapusMateri(materiPelajaran[i].id.toString(), context);
                                                                             },
                                                                           ),
                                                                           FlatButton(
