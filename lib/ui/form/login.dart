@@ -37,7 +37,6 @@ class FormLogin extends StatefulWidget {
 }
 
 class _FormLoginState extends State<FormLogin> {
-  
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
 
@@ -52,7 +51,7 @@ class _FormLoginState extends State<FormLogin> {
   //   if(msg == "OKK") {
   //     Navigator.push(context, MaterialPageRoute(builder: (context)=>Learning()));
   //   }
-    
+
   // }
 
   @override
@@ -166,7 +165,7 @@ class _FormLoginState extends State<FormLogin> {
                                 RaisedButton(
                                   onPressed: () {
                                     print('Berhasil masuk');
-                                    Navigator.push(
+                                    Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => Screen()));
