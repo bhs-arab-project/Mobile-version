@@ -14,19 +14,19 @@ class _PembelajaranState extends State<Pembelajaran> {
     initialPage: 0,
   );
 
-  void dataSingleBab() {
-    getSingleBab(widget.id).then((value) {
-      setState(() {
-        materiSingle = value;
-      });
-    });
-  }
+  // void dataSingleBab() {
+  //   getSingleBab(widget.id).then((value) {
+  //     setState(() {
+  //       materiSingle = value;
+  //     });
+  //   });
+  // }
 
-  @override
-  void initState() {
-    super.initState();
-    dataSingleBab();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   dataSingleBab();
+  // }
 
   @override
   void dispose() {

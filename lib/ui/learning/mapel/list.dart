@@ -11,19 +11,19 @@ class ListMateri extends StatefulWidget {
 class _ListMateriState extends State<ListMateri> {
   Map<String, dynamic> babSingle;
 
-  void dataSingleMateri() {
-    getSinglePelajaran(widget.id).then((value) {
-      setState(() {
-        babSingle = value;
-      });
-    });
-  }
+  // void dataSingleMateri() {
+  //   getSinglePelajaran(widget.id).then((value) {
+  //     setState(() {
+  //       babSingle = value;
+  //     });
+  //   });
+  // }
 
-  @override
-  void initState() {
-    super.initState();
-    dataSingleMateri();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   dataSingleMateri();
+  // }
 
   @override
   Widget build(BuildContext context) {

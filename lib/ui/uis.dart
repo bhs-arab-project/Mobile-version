@@ -1,4 +1,6 @@
-import 'package:bahasa_arab/models/models.dart';
+import 'dart:convert';
+import 'dart:math';
+import 'dart:io';
 import 'package:bahasa_arab/package/flutter_animation_progress_bar.dart';
 import 'package:bahasa_arab/package/slide_panel.dart';
 import 'package:bahasa_arab/package/text_field.dart';
@@ -10,10 +12,9 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'dart:math';
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../viewModels/viewModels.dart';
 
 part 'bottomnavigation.dart';
@@ -43,9 +44,13 @@ part 'learning/intermediate/inter_learn.dart';
 part 'learning/advance/advance_learn.dart';
 
 // Account
-part 'account/user.dart';
-part 'account/button/edit_account.dart';
-part 'account/button/progres.dart';
-part 'account/button/sertifikat.dart';
-part 'form/login.dart';
-part 'form/register.dart';
+part 'account/admin/list_guru.dart';
+part 'account/admin/list_user.dart';
+part 'account/guru/guru.dart';
+part 'account/user/user.dart';
+part 'account/user/button/edit_account.dart';
+part 'account/user/button/progres.dart';
+
+// FORM
+part 'form/sign_in.dart';
+part 'form/sign_up.dart';

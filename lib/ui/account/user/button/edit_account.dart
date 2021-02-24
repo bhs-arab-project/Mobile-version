@@ -1,4 +1,4 @@
-part of '../../uis.dart';
+part of '../../../uis.dart';
 
 class EditAccount extends StatefulWidget {
   @override

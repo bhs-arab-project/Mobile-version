@@ -3,7 +3,7 @@ part of 'viewModels.dart';
 Future getAllPelajaran(BuildContext context) async {
   try {
     http.Response hasil = await http.get(
-        Uri.encodeFull("https://data-beta.herokuapp.com/api/pelajaran"),
+        Uri.encodeFull("http://10.0.2.101:8000/api/pelajaran"),
         headers: {"Accept": "application/json"});
 
     if (hasil.statusCode == 200) {
@@ -38,46 +38,6 @@ Future getAllPelajaran(BuildContext context) async {
   }
 }
 
-Future getSinglePelajaran(String id) async {
-  try {
-    http.Response hasil = await http.get(
-        Uri.encodeFull("https://data-beta.herokuapp.com/api/pelajaran/${id}"),
-        headers: {"Accept": "application/json"});
-
-    if (hasil.statusCode == 200) {
-      print("Berhasil memuat single materi");
-      final data = json.decode(hasil.body);
-      return data;
-    } else {
-      print("Gagal memuat single materi");
-      return null;
-    }
-  } catch (e) {
-    print("Error pada catch $e");
-    return null;
-  }
-}
-
-Future getSingleBab(String id) async {
-  try {
-    http.Response hasil = await http.get(
-        Uri.encodeFull("https://data-beta.herokuapp.com/api/bab/${id}"),
-        headers: {"Accept": "application/json"});
-
-    if (hasil.statusCode == 200) {
-      print("Berhasil memuat single bab");
-      final data = json.decode(hasil.body);
-      return data;
-    } else {
-      print("Gagal memuat single bab");
-      return null;
-    }
-  } catch (e) {
-    print("Error pada catch $e");
-    return null;
-  }
-}
-
 Future deleteMateri(String id) async {
   try {
     var url = "https://data-beta.herokuapp.com/api/pelajaran/${id}";
@@ -94,3 +54,43 @@ Future deleteMateri(String id) async {
     return false;
   }
 }
+
+// Future register(
+//   BuildContext context,
+//   String name,
+//   String email,
+//   String password,
+//   String role,
+// ) async {
+//   try {
+//     var url = "http://data-beta.herokuapp.com/api/register";
+//     var hasil = await http.post(url,
+//         body: ({
+//           "name": name,
+//           "email": email,
+//           "password": password,
+//           "role": role
+//         }));
+//     if (hasil.statusCode == 201) {
+//       print("Berhasil register");
+//       final snackbar = SnackBar(
+//         duration: Duration(milliseconds: 3000),
+//         backgroundColor: Colors.red,
+//         content: Text("Berhasil Register"),
+//       );
+//       Scaffold.of(context).showSnackBar(snackbar);
+//       return true;
+//     } else {
+//       print("Gagl register");
+//       final snackbar = SnackBar(
+//         duration: Duration(milliseconds: 3000),
+//         backgroundColor: Colors.red,
+//         content: Text("Gagal Register"),
+//       );
+//       Scaffold.of(context).showSnackBar(snackbar);
+//       return false;
+//     }
+//   } catch (e) {
+//     print('error pada $e');
+//   }
+// }

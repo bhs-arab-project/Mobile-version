@@ -10,46 +10,83 @@ String dataPelajaranToJson(List<DataPelajaran> data) =>
 class DataPelajaran {
   DataPelajaran({
     this.id,
-    this.guruId,
+    this.userId,
     this.pelajaran,
-    this.guru,
     this.tingkatan,
-    this.jumlahMateri,
     this.deskripsi,
+    this.createdAt,
+    this.updatedAt,
+    this.chapter,
+  });
+
+  int id;
+  int userId;
+  String pelajaran;
+  String tingkatan;
+  String deskripsi;
+  DateTime createdAt;
+  DateTime updatedAt;
+  List<Chapter> chapter;
+
+  factory DataPelajaran.fromJson(Map<String, dynamic> json) => DataPelajaran(
+        id: json["id"],
+        userId: json["user_id"],
+        pelajaran: json["pelajaran"],
+        tingkatan: json["tingkatan"],
+        deskripsi: json["deskripsi"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+        chapter:
+            List<Chapter>.from(json["chapter"].map((x) => Chapter.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "user_id": userId,
+        "pelajaran": pelajaran,
+        "tingkatan": tingkatan,
+        "deskripsi": deskripsi,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
+        "chapter": List<dynamic>.from(chapter.map((x) => x.toJson())),
+      };
+}
+
+class Chapter {
+  Chapter({
+    this.id,
+    this.userId,
+    this.lessonId,
+    this.judulBab,
+    this.materi,
     this.createdAt,
     this.updatedAt,
   });
 
   int id;
-  int guruId;
-  String pelajaran;
-  String guru;
-  String tingkatan;
-  String jumlahMateri;
-  String deskripsi;
+  int userId;
+  int lessonId;
+  String judulBab;
+  String materi;
   DateTime createdAt;
   DateTime updatedAt;
 
-  factory DataPelajaran.fromJson(Map<String, dynamic> json) => DataPelajaran(
+  factory Chapter.fromJson(Map<String, dynamic> json) => Chapter(
         id: json["id"],
-        guruId: json["guru_id"],
-        pelajaran: json["pelajaran"],
-        guru: json["guru"],
-        tingkatan: json["tingkatan"],
-        jumlahMateri: json["jumlah_materi"],
-        deskripsi: json["deskripsi"],
+        userId: json["user_id"],
+        lessonId: json["lesson_id"],
+        judulBab: json["judul_bab"],
+        materi: json["materi"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "guru_id": guruId,
-        "pelajaran": pelajaran,
-        "guru": guru,
-        "tingkatan": tingkatan,
-        "jumlah_materi": jumlahMateri,
-        "deskripsi": deskripsi,
+        "user_id": userId,
+        "lesson_id": lessonId,
+        "judul_bab": judulBab,
+        "materi": materi,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
       };

@@ -191,50 +191,50 @@ class _LearningState extends State<Learning>
                                                           fontSize: 16.5,
                                                           fontWeight:
                                                               FontWeight.w600)),
-                                                  Text(materiPelajaran[i].guru,
-                                                      style: TextStyle(
-                                                          color: Colors.black,
-                                                          fontFamily: 'Avenir',
-                                                          fontSize: 17.0,
-                                                          fontWeight:
-                                                              FontWeight.w600)),
+                                                  // Text(materiPelajaran[i].guru,
+                                                  //     style: TextStyle(
+                                                  //         color: Colors.black,
+                                                  //         fontFamily: 'Avenir',
+                                                  //         fontSize: 17.0,
+                                                  //         fontWeight:
+                                                  //             FontWeight.w600)),
                                                   SizedBox(height: 10),
-                                                  Container(
-                                                      child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Icon(
-                                                              Icons.assignment,
-                                                              color: Colors
-                                                                      .tealAccent[
-                                                                  300],
-                                                              size: 20.0,
-                                                            ),
-                                                            Text(": ")
-                                                          ]),
-                                                      Text(
-                                                          materiPelajaran[i]
-                                                                  .jumlahMateri +
-                                                              "Materi",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              fontSize: 16,
-                                                              color: Colors
-                                                                      .blueGrey[
-                                                                  800],
-                                                              fontFamily:
-                                                                  'Avenir')),
-                                                    ],
-                                                  )),
+                                                  // Container(
+                                                  //     child: Row(
+                                                  //   mainAxisAlignment:
+                                                  //       MainAxisAlignment
+                                                  //           .center,
+                                                  //   children: [
+                                                  //     Row(
+                                                  //         mainAxisAlignment:
+                                                  //             MainAxisAlignment
+                                                  //                 .center,
+                                                  //         children: [
+                                                  //           Icon(
+                                                  //             Icons.assignment,
+                                                  //             color: Colors
+                                                  //                     .tealAccent[
+                                                  //                 300],
+                                                  //             size: 20.0,
+                                                  //           ),
+                                                  //           Text(": ")
+                                                  //         ]),
+                                                  //     Text(
+                                                  //         materiPelajaran[i]
+                                                  //                 .jumlahMateri +
+                                                  //             "Materi",
+                                                  //         style: TextStyle(
+                                                  //             fontWeight:
+                                                  //                 FontWeight
+                                                  //                     .w500,
+                                                  //             fontSize: 16,
+                                                  //             color: Colors
+                                                  //                     .blueGrey[
+                                                  //                 800],
+                                                  //             fontFamily:
+                                                  //                 'Avenir')),
+                                                  //   ],
+                                                  // )),
                                                 ]),
                                           ),
                                           Container(

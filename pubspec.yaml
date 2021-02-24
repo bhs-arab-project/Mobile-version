@@ -39,7 +39,8 @@ dependencies:
   smooth_page_indicator: ^0.2.0
   rflutter_alert: ^1.1.0
   auto_size_text: ^2.1.0
-  pull_to_refresh: 
+  # pull_to_refresh: any
+  shared_preferences: ^0.5.12+4
 
 # dependency_overrides:
 #   path: any

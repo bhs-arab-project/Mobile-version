@@ -1,6 +1,6 @@
-part of '../uis.dart';
+part of '../../uis.dart';
 
-class Account extends StatelessWidget {
+class HomeUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
@@ -154,7 +154,7 @@ class Account extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Sertifikat()));
+                                  builder: (context) => LoginScreen()));
                         },
                         leading: Icon(
                           Icons.book,

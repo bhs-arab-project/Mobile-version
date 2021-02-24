@@ -35,8 +35,8 @@ class MyApp extends StatelessWidget {
           // BEGINNER
           '/interlearn': (context) => InterLearn(),
           // Form
-          '/login': (context) => Login(),
-          "/register": (context) => Register(),
+          '/login': (context) => LoginScreen(),
+          "/register": (context) => RegisScreen(),
           // Mapel
           '/daftar': (context) => Learning(),
           '/list': (context) => ListMateri(),
