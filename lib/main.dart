@@ -1,7 +1,8 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:bahasa_arab/ui/uis.dart';
+import 'package:bahasa_arab/form/sign_in.dart';
+import 'package:bahasa_arab/user/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'splashscreen.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -11,29 +12,39 @@ void main() {
   ));
 }
 
-class SphScreen extends StatefulWidget {
+class CheckAuth extends StatefulWidget {
   @override
-  _SphScreenState createState() => _SphScreenState();
+  _CheckAuthState createState() => _CheckAuthState();
 }
 
-class _SphScreenState extends State<SphScreen> with TickerProviderStateMixin {
+class _CheckAuthState extends State<CheckAuth> {
+  bool isAuth = false;
+  @override
+  void initState() {
+    _checkIfLoggedIn();
+    super.initState();
+  }
+
+  void _checkIfLoggedIn() async {
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    var token = localStorage.getString('token');
+    if (token != null) {
+      setState(() {
+        isAuth = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Container(
-        width: 100,
-        height: 100,
-        child: AnimatedSplashScreen(
-          splash: Image.asset("assets/image/icon2.png"),
-          nextScreen: LoginScreen(),
-          splashIconSize: 300,
-          curve: Curves.fastOutSlowIn,
-          splashTransition: SplashTransition.scaleTransition,
-          duration: 400,
-        ),
-      ),
+    Widget child;
+    if (isAuth) {
+      child = Home();
+    } else {
+      child = LoginScreen();
+    }
+    return Scaffold(
+      body: child,
     );
   }
 }
