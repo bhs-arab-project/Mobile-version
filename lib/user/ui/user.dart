@@ -1,15 +1,30 @@
-import 'package:bahasa_arab/form/sign_in.dart';
+import 'package:bahasa_arab/auth/sign_in.dart';
+import 'package:bahasa_arab/user/VM/view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeUser extends StatefulWidget {
-  HomeUser({Key key, this.title}) : super(key: key);
-  final String title;
   @override
   _HomeUserState createState() => _HomeUserState();
 }
 
 class _HomeUserState extends State<HomeUser> {
+  var getUser;
+  // Map<String, dynamic> getUser;
+
+  void dataUser() {
+    UserViewModel().userGet().then((value) {
+      setState(() {
+        getUser = value;
+      });
+    });
+  }
+
+  void initState() {
+    super.initState();
+    dataUser();
+  }
+
   _save(String token) async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'token';
@@ -19,7 +34,8 @@ class _HomeUserState extends State<HomeUser> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
+    return Scaffold(
+        body: Stack(children: [
       Container(
           child: Column(
         children: [
@@ -41,14 +57,14 @@ class _HomeUserState extends State<HomeUser> {
                 SizedBox(
                   height: 15.0,
                 ),
-                Text("Webeeh10",
+                Text(getUser == null ? "" : getUser[0]['name'],
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 20.0,
                         fontFamily: 'Avenir',
                         fontWeight: FontWeight.w600)),
                 SizedBox(height: 10),
-                Text("Pelajar",
+                Text(getUser == null ? "" : getUser[0]['role'],
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 15.0,
@@ -89,7 +105,7 @@ class _HomeUserState extends State<HomeUser> {
           child: ListView(
             children: [
               ListTile(
-                title: Text("Wahyu321@gmail.com",
+                title: Text(getUser == null ? "" : getUser[0]['email'],
                     style: TextStyle(color: Colors.black)),
                 subtitle: Text("email"),
               ),
@@ -120,12 +136,17 @@ class _HomeUserState extends State<HomeUser> {
                                         children: <Widget>[
                                           TextFormField(
                                             decoration: InputDecoration(
-                                              labelText: 'nama depan',
+                                              labelText: 'Nama',
                                             ),
                                           ),
                                           TextFormField(
                                             decoration: InputDecoration(
-                                              labelText: 'nama belakang',
+                                              labelText: 'Email',
+                                            ),
+                                          ),
+                                          TextFormField(
+                                            decoration: InputDecoration(
+                                              labelText: 'Password',
                                             ),
                                           ),
                                         ],
@@ -215,7 +236,7 @@ class _HomeUserState extends State<HomeUser> {
           ),
         ),
       )
-    ]);
+    ]));
   }
 }
 

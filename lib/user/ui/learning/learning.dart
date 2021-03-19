@@ -1,3 +1,4 @@
+import 'package:bahasa_arab/package/flushbar/flushbar.dart';
 import 'package:bahasa_arab/package/text_field.dart';
 import 'package:bahasa_arab/user/VM/view_model.dart';
 import 'package:bahasa_arab/user/ui/learning/mapel/list.dart';
@@ -14,12 +15,13 @@ class _LearningState extends State<Learning>
     with SingleTickerProviderStateMixin {
   AnimationController _animController;
   Animation<double> _animation;
-  TextEditingController filter = TextEditingController();
+  TextEditingController searchController = new TextEditingController();
+  String filter;
 
   var materiPelajaran;
 
   void dataPelajaran() {
-    allPelajaran().then((value) {
+    allPelajaran(context).then((value) {
       setState(() {
         materiPelajaran = value;
       });
@@ -36,36 +38,26 @@ class _LearningState extends State<Learning>
     _animController.forward();
     super.initState();
     dataPelajaran();
+    searchController.addListener(() {
+      setState(() {
+        filter = searchController.text;
+      });
+    });
   }
 
-  void hapusMateri(String id) async {
-    bool hapus = await deleteMateri(id);
-
-    if (hapus == true) {
-      final snackbar = SnackBar(
-        duration: Duration(milliseconds: 3000),
-        backgroundColor: Colors.green,
-        content: Text("Berhasil menghapus materi"),
-      );
-      Scaffold.of(context).showSnackBar(snackbar);
-    } else {
-      final snackbar = SnackBar(
-        duration: Duration(milliseconds: 3000),
-        backgroundColor: Colors.red,
-        content: Text("Gagal menghapus materi"),
-      );
-      Scaffold.of(context).showSnackBar(snackbar);
-    }
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // Size size = MediaQuery.of(context).size;
-    // SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
     SystemChrome.setEnabledSystemUIOverlays([]);
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
     return Container(
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height / 1.09,
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -74,11 +66,12 @@ class _LearningState extends State<Learning>
                 Container(
                   height: MediaQuery.of(context).size.height / 2.8,
                   decoration: BoxDecoration(
+                      color: Colors.blue[400],
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(40),
                           bottomRight: Radius.circular(40)),
                       image: DecorationImage(
-                          image: AssetImage("assets/image/icon1.png"),
+                          image: AssetImage("assets/image/icon.png"),
                           fit: BoxFit.fitWidth)),
                 ),
                 Container(
@@ -90,7 +83,7 @@ class _LearningState extends State<Learning>
                   child: Align(
                       alignment: Alignment.center,
                       child: BeautyTextfield(
-                        controller: filter,
+                        controller: searchController,
                         fontFamily: 'Avenir',
                         fontWeight: FontWeight.w700,
                         width: double.maxFinite,
@@ -159,37 +152,30 @@ class _LearningState extends State<Learning>
                           child: ListView.builder(
                               itemCount: materiPelajaran.length,
                               itemBuilder: (context, i) {
-                                return Stack(
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.only(
-                                          left: 25.0,
-                                          right: 25.0,
-                                          bottom: 30.0,
-                                          top: 5.0),
-                                      child: RaisedButton(
-                                        onPressed: () {
-                                          print('Daftar materi');
-                                          Navigator.push(context,
-                                              MaterialPageRoute(
-                                                  builder: (context) {
-                                            return ListMateri(
-                                                id: materiPelajaran[i]['id']
-                                                    .toString());
-                                          }));
-                                        },
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(23.0),
-                                          topRight: Radius.circular(23.0),
-                                          bottomLeft: Radius.circular(23.0),
-                                          bottomRight: Radius.circular(23.0),
-                                        )),
-                                        padding: EdgeInsets.all(0.0),
-                                        child: Ink(
-                                          decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius: BorderRadius.only(
+                                return filter == null || filter == ""
+                                    ? Stack(
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                              left: 25.0,
+                                              right: 25.0,
+                                              bottom: 30.0,
+                                            ),
+                                            child: RaisedButton(
+                                              onPressed: () {
+                                                print('Daftar materi');
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return ListMateri(
+                                                      id: materiPelajaran[i]
+                                                              ['id']
+                                                          .toString());
+                                                }));
+                                              },
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.only(
                                                 topLeft: Radius.circular(23.0),
                                                 topRight: Radius.circular(23.0),
                                                 bottomLeft:
@@ -197,201 +183,529 @@ class _LearningState extends State<Learning>
                                                 bottomRight:
                                                     Radius.circular(23.0),
                                               )),
-                                          child: Container(
-                                              padding: EdgeInsets.only(
-                                                  left: 20.0,
-                                                  right: 20.0,
-                                                  bottom: 20.0),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Container(
-                                                    child: Image.asset(
-                                                        'assets/image/man.png',
-                                                        height: 80),
-                                                  ),
-                                                  Container(
-                                                    child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Row(children: [
-                                                            Text(
-                                                                materiPelajaran[
-                                                                        i][
-                                                                    'pelajaran'],
-                                                                style: TextStyle(
+                                              padding: EdgeInsets.all(0.0),
+                                              child: Ink(
+                                                decoration: BoxDecoration(
+                                                    color: Colors.white,
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(23.0),
+                                                      topRight:
+                                                          Radius.circular(23.0),
+                                                      bottomLeft:
+                                                          Radius.circular(23.0),
+                                                      bottomRight:
+                                                          Radius.circular(23.0),
+                                                    )),
+                                                child: Container(
+                                                    padding: EdgeInsets.only(
+                                                        left: 20.0,
+                                                        right: 20.0,
+                                                        bottom: 20.0),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Container(
+                                                          child: Image.asset(
+                                                              'assets/image/man.png',
+                                                              height: 80),
+                                                        ),
+                                                        Container(
+                                                          child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                // Row(children: [
+
+                                                                //   // FlatButton(
+                                                                //   //   onPressed: () {
+                                                                //   //     _showDialog();
+                                                                //   //     print('hapus');
+                                                                //   //   },
+                                                                //   //   child: Text(
+                                                                //   //     "Hapus",
+                                                                //   //     style: TextStyle(
+                                                                //   //         color: Colors.red,
+                                                                //   //         fontFamily:
+                                                                //   //             'Mont',
+                                                                //   //         fontSize: 18.5,
+                                                                //   //         fontWeight:
+                                                                //   //             FontWeight
+                                                                //   //                 .w800),
+                                                                //   //   ),
+                                                                //   // ),
+                                                                // ]),
+                                                                Text(
+                                                                    materiPelajaran[
+                                                                            i][
+                                                                        'pelajaran'],
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .black,
+                                                                        fontFamily:
+                                                                            'Mont',
+                                                                        fontSize:
+                                                                            17,
+                                                                        fontWeight:
+                                                                            FontWeight.w800)),
+                                                                SizedBox(
+                                                                  height: 20.0,
+                                                                ),
+                                                                Row(
+                                                                  children: [
+                                                                    Text(
+                                                                        "Pengajar: ",
+                                                                        style: TextStyle(
+                                                                            color: Colors
+                                                                                .black,
+                                                                            fontFamily:
+                                                                                'Avenir',
+                                                                            fontSize:
+                                                                                15,
+                                                                            fontWeight:
+                                                                                FontWeight.w600)),
+                                                                    Text(
+                                                                        materiPelajaran[i]
+                                                                            [
+                                                                            'guru'],
+                                                                        // "Fityan Ilham Wahyudi",
+                                                                        style: TextStyle(
+                                                                            color: Colors
+                                                                                .black,
+                                                                            fontFamily:
+                                                                                'Avenir',
+                                                                            fontSize:
+                                                                                14,
+                                                                            fontWeight:
+                                                                                FontWeight.w600)),
+                                                                  ],
+                                                                ),
+                                                                SizedBox(
+                                                                    height: 10),
+                                                                Row(
+                                                                  children: [
+                                                                    Icon(
+                                                                      Icons
+                                                                          .assignment,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Text(
+                                                                        "Jumlah materi: ",
+                                                                        style: TextStyle(
+                                                                            color: Colors
+                                                                                .black,
+                                                                            fontFamily:
+                                                                                'Avenir',
+                                                                            fontSize:
+                                                                                14,
+                                                                            fontWeight:
+                                                                                FontWeight.w600)),
+                                                                    materiPelajaran[i]['chapter'] ==
+                                                                            null
+                                                                        ? Text(
+                                                                            "Belum ada",
+                                                                            style: TextStyle(
+                                                                                color: Colors.black,
+                                                                                fontFamily: 'Avenir',
+                                                                                fontSize: 15,
+                                                                                fontWeight: FontWeight.w600))
+                                                                        : Text(materiPelajaran[i]['chapter'].toList().length.toString(), style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600))
+                                                                  ],
+                                                                )
+                                                              ]),
+                                                        ),
+                                                        materiPelajaran[i][
+                                                                    'tingkatan'] ==
+                                                                'sulit'
+                                                            ? Container(
+                                                                margin: EdgeInsets.only(
+                                                                    top: MediaQuery.of(context)
+                                                                            .size
+                                                                            .height /
+                                                                        10),
+                                                                alignment:
+                                                                    Alignment
+                                                                        .center,
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .all(2),
+                                                                height: 20,
+                                                                width: 70,
+                                                                decoration: BoxDecoration(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            20),
                                                                     color: Colors
-                                                                        .black,
-                                                                    fontFamily:
-                                                                        'Mont',
-                                                                    fontSize:
-                                                                        17.5,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w800)),
-                                                            FlatButton(
-                                                              onPressed: () {
-                                                                showDialog(
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (context) {
-                                                                      return AlertDialog(
-                                                                        title: Text(
-                                                                            "Pemberitahuan"),
-                                                                        content:
-                                                                            Text("Anda yakin ingin menghapus pelajaran ${materiPelajaran[i].pelajaran}?"),
-                                                                        actions: <
-                                                                            Widget>[
-                                                                          FlatButton(
-                                                                            child:
-                                                                                Text("Iya"),
-                                                                            onPressed:
-                                                                                () {
-                                                                              Navigator.pop(context);
-                                                                              hapusMateri(materiPelajaran[i]['id'].toString());
-                                                                            },
-                                                                          ),
-                                                                          FlatButton(
-                                                                            child:
-                                                                                Text("Tidak"),
-                                                                            onPressed:
-                                                                                () {
-                                                                              Navigator.pop(context);
-                                                                            },
-                                                                          )
-                                                                        ],
-                                                                      );
-                                                                    });
-                                                              },
-                                                              child: Text(
-                                                                "Hapus",
-                                                                style: TextStyle(
-                                                                    color: Colors
-                                                                        .red,
-                                                                    fontFamily:
-                                                                        'Mont',
-                                                                    fontSize:
-                                                                        18.5,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w800),
-                                                              ),
-                                                            ),
-                                                          ]),
-                                                          Text("Pengajar:",
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .black,
-                                                                  fontFamily:
-                                                                      'Avenir',
-                                                                  fontSize:
-                                                                      16.5,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600)),
-                                                          Text(
-                                                              materiPelajaran[i]
-                                                                  ['guru'],
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .black,
-                                                                  fontFamily:
-                                                                      'Avenir',
-                                                                  fontSize:
-                                                                      17.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600)),
-                                                          SizedBox(height: 10),
-                                                          // Container(
-                                                          //     child: Row(
-                                                          //   mainAxisAlignment:
-                                                          //       MainAxisAlignment
-                                                          //           .center,
-                                                          //   children: [
-                                                          //     Row(
-                                                          //         mainAxisAlignment:
-                                                          //             MainAxisAlignment
-                                                          //                 .center,
-                                                          //         children: [
-                                                          //           Icon(
-                                                          //             Icons.assignment,
-                                                          //             color: Colors
-                                                          //                     .tealAccent[
-                                                          //                 300],
-                                                          //             size: 20.0,
-                                                          //           ),
-                                                          //           Text(": ")
-                                                          //         ]),
-                                                          //     Text(
-                                                          //         materiPelajaran[i]
-                                                          //                 .jumlahMateri +
-                                                          //             "Materi",
-                                                          //         style: TextStyle(
-                                                          //             fontWeight:
-                                                          //                 FontWeight
-                                                          //                     .w500,
-                                                          //             fontSize: 16,
-                                                          //             color: Colors
-                                                          //                     .blueGrey[
-                                                          //                 800],
-                                                          //             fontFamily:
-                                                          //                 'Avenir')),
-                                                          //   ],
-                                                          // )),
-                                                        ]),
-                                                  ),
-                                                  Container(
-                                                    margin: EdgeInsets.only(
-                                                        top: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .height /
-                                                            10),
-                                                    alignment: Alignment.center,
-                                                    padding: EdgeInsets.all(2),
-                                                    height: 20,
-                                                    width: 70,
+                                                                        .red),
+                                                                child: Text(
+                                                                    "sulit",
+                                                                    style: TextStyle(
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .bold,
+                                                                        fontSize:
+                                                                            10,
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontFamily:
+                                                                            'Avenir')),
+                                                              )
+                                                            : materiPelajaran[i]
+                                                                        [
+                                                                        'tingkatan'] ==
+                                                                    'menengah'
+                                                                ? Container(
+                                                                    margin: EdgeInsets.only(
+                                                                        top: MediaQuery.of(context).size.height /
+                                                                            10),
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .center,
+                                                                    padding:
+                                                                        EdgeInsets
+                                                                            .all(2),
+                                                                    height: 20,
+                                                                    width: 70,
+                                                                    decoration: BoxDecoration(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(
+                                                                                20),
+                                                                        color: Colors
+                                                                            .orange),
+                                                                    child: Text(
+                                                                        "menengah",
+                                                                        style: TextStyle(
+                                                                            fontWeight: FontWeight
+                                                                                .bold,
+                                                                            fontSize:
+                                                                                10,
+                                                                            color:
+                                                                                Colors.white,
+                                                                            fontFamily: 'Avenir')),
+                                                                  )
+                                                                : Container(
+                                                                    margin: EdgeInsets.only(
+                                                                        top: MediaQuery.of(context).size.height /
+                                                                            10),
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .center,
+                                                                    padding:
+                                                                        EdgeInsets
+                                                                            .all(2),
+                                                                    height: 20,
+                                                                    width: 70,
+                                                                    decoration: BoxDecoration(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(
+                                                                                20),
+                                                                        color: Colors
+                                                                            .green),
+                                                                    child: Text(
+                                                                        "mudah",
+                                                                        style: TextStyle(
+                                                                            fontWeight: FontWeight
+                                                                                .bold,
+                                                                            fontSize:
+                                                                                10,
+                                                                            color:
+                                                                                Colors.white,
+                                                                            fontFamily: 'Avenir')),
+                                                                  )
+                                                      ],
+                                                    )),
+                                              ),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            right: 20,
+                                            child: Container(
+                                              child: Image.asset(
+                                                  "assets/icon/beginlearn.png",
+                                                  // height: 80,
+                                                  width: 60),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    : '${materiPelajaran[i]['pelajaran']} || ${materiPelajaran[i]['guru']}'
+                                            .toLowerCase()
+                                            .contains(filter.toLowerCase())
+                                        ? Stack(
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.only(
+                                                  left: 25.0,
+                                                  right: 25.0,
+                                                  bottom: 30.0,
+                                                ),
+                                                child: RaisedButton(
+                                                  onPressed: () {
+                                                    print('Daftar materi');
+                                                    Navigator.push(context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) {
+                                                      return ListMateri(
+                                                          id: materiPelajaran[i]
+                                                                  ['id']
+                                                              .toString());
+                                                    }));
+                                                  },
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(23.0),
+                                                    topRight:
+                                                        Radius.circular(23.0),
+                                                    bottomLeft:
+                                                        Radius.circular(23.0),
+                                                    bottomRight:
+                                                        Radius.circular(23.0),
+                                                  )),
+                                                  padding: EdgeInsets.all(0.0),
+                                                  child: Ink(
                                                     decoration: BoxDecoration(
+                                                        color: Colors.white,
                                                         borderRadius:
-                                                            BorderRadius
-                                                                .circular(20),
-                                                        color: Colors
-                                                            .orangeAccent),
-                                                    child: Text(
-                                                        materiPelajaran[i]
-                                                            ['tingkatan'],
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 10.5,
-                                                            color: Colors.white,
-                                                            fontFamily:
-                                                                'Avenir')),
+                                                            BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  23.0),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  23.0),
+                                                          bottomLeft:
+                                                              Radius.circular(
+                                                                  23.0),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  23.0),
+                                                        )),
+                                                    child: Container(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                left: 20.0,
+                                                                right: 20.0,
+                                                                bottom: 20.0),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Container(
+                                                              child: Image.asset(
+                                                                  'assets/image/man.png',
+                                                                  height: 80),
+                                                            ),
+                                                            Container(
+                                                              child: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    // Row(children: [
+
+                                                                    //   // FlatButton(
+                                                                    //   //   onPressed: () {
+                                                                    //   //     _showDialog();
+                                                                    //   //     print('hapus');
+                                                                    //   //   },
+                                                                    //   //   child: Text(
+                                                                    //   //     "Hapus",
+                                                                    //   //     style: TextStyle(
+                                                                    //   //         color: Colors.red,
+                                                                    //   //         fontFamily:
+                                                                    //   //             'Mont',
+                                                                    //   //         fontSize: 18.5,
+                                                                    //   //         fontWeight:
+                                                                    //   //             FontWeight
+                                                                    //   //                 .w800),
+                                                                    //   //   ),
+                                                                    //   // ),
+                                                                    // ]),
+                                                                    Text(
+                                                                        materiPelajaran[i]
+                                                                            [
+                                                                            'pelajaran'],
+                                                                        style: TextStyle(
+                                                                            color: Colors
+                                                                                .black,
+                                                                            fontFamily:
+                                                                                'Mont',
+                                                                            fontSize:
+                                                                                17,
+                                                                            fontWeight:
+                                                                                FontWeight.w800)),
+                                                                    SizedBox(
+                                                                      height:
+                                                                          20.0,
+                                                                    ),
+                                                                    Row(
+                                                                      children: [
+                                                                        Text(
+                                                                            "Pengajar: ",
+                                                                            style: TextStyle(
+                                                                                color: Colors.black,
+                                                                                fontFamily: 'Avenir',
+                                                                                fontSize: 15,
+                                                                                fontWeight: FontWeight.w600)),
+                                                                        Text(
+                                                                            materiPelajaran[i][
+                                                                                'guru'],
+                                                                            // "Fityan Ilham Wahyudi",
+                                                                            style: TextStyle(
+                                                                                color: Colors.black,
+                                                                                fontFamily: 'Avenir',
+                                                                                fontSize: 14,
+                                                                                fontWeight: FontWeight.w600)),
+                                                                      ],
+                                                                    ),
+                                                                    SizedBox(
+                                                                        height:
+                                                                            10),
+                                                                    Row(
+                                                                      children: [
+                                                                        Icon(
+                                                                          Icons
+                                                                              .assignment,
+                                                                          size:
+                                                                              20.0,
+                                                                        ),
+                                                                        Text(
+                                                                            "Jumlah materi: ",
+                                                                            style: TextStyle(
+                                                                                color: Colors.black,
+                                                                                fontFamily: 'Avenir',
+                                                                                fontSize: 14,
+                                                                                fontWeight: FontWeight.w600)),
+                                                                        materiPelajaran[i]['chapter']
+                                                                                .isEmpty
+                                                                            ? Text(
+                                                                                "Belum ada",
+                                                                                style: TextStyle(color: Colors.red, fontFamily: 'Poppins', fontWeight: FontWeight.w600),
+                                                                              )
+                                                                            : Text(materiPelajaran[i]['chapter'].toList().length.toString(),
+                                                                                style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600))
+                                                                      ],
+                                                                    )
+                                                                  ]),
+                                                            ),
+                                                            materiPelajaran[i][
+                                                                        'tingkatan'] ==
+                                                                    'sulit'
+                                                                ? Container(
+                                                                    margin: EdgeInsets.only(
+                                                                        top: MediaQuery.of(context).size.height /
+                                                                            10),
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .center,
+                                                                    padding:
+                                                                        EdgeInsets
+                                                                            .all(2),
+                                                                    height: 20,
+                                                                    width: 70,
+                                                                    decoration: BoxDecoration(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(
+                                                                                20),
+                                                                        color: Colors
+                                                                            .red),
+                                                                    child: Text(
+                                                                        "sulit",
+                                                                        style: TextStyle(
+                                                                            fontWeight: FontWeight
+                                                                                .bold,
+                                                                            fontSize:
+                                                                                10,
+                                                                            color:
+                                                                                Colors.white,
+                                                                            fontFamily: 'Avenir')),
+                                                                  )
+                                                                : materiPelajaran[i]
+                                                                            [
+                                                                            'tingkatan'] ==
+                                                                        'menengah'
+                                                                    ? Container(
+                                                                        margin: EdgeInsets.only(
+                                                                            top:
+                                                                                MediaQuery.of(context).size.height / 10),
+                                                                        alignment:
+                                                                            Alignment.center,
+                                                                        padding:
+                                                                            EdgeInsets.all(2),
+                                                                        height:
+                                                                            20,
+                                                                        width:
+                                                                            70,
+                                                                        decoration: BoxDecoration(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(20),
+                                                                            color: Colors.orange),
+                                                                        child: Text(
+                                                                            "menengah",
+                                                                            style: TextStyle(
+                                                                                fontWeight: FontWeight.bold,
+                                                                                fontSize: 10,
+                                                                                color: Colors.white,
+                                                                                fontFamily: 'Avenir')),
+                                                                      )
+                                                                    : Container(
+                                                                        margin: EdgeInsets.only(
+                                                                            top:
+                                                                                MediaQuery.of(context).size.height / 10),
+                                                                        alignment:
+                                                                            Alignment.center,
+                                                                        padding:
+                                                                            EdgeInsets.all(2),
+                                                                        height:
+                                                                            20,
+                                                                        width:
+                                                                            70,
+                                                                        decoration: BoxDecoration(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(20),
+                                                                            color: Colors.green),
+                                                                        child: Text(
+                                                                            "mudah",
+                                                                            style: TextStyle(
+                                                                                fontWeight: FontWeight.bold,
+                                                                                fontSize: 10,
+                                                                                color: Colors.white,
+                                                                                fontFamily: 'Avenir')),
+                                                                      )
+                                                          ],
+                                                        )),
                                                   ),
-                                                ],
-                                              )),
-                                        ),
-                                      ),
-                                    ),
-                                    Positioned(
-                                      right: 20,
-                                      child: Container(
-                                        child: Image.asset(
-                                            "assets/icon/beginlearn.png",
-                                            // height: 80,
-                                            width: 60),
-                                      ),
-                                    ),
-                                  ],
-                                );
+                                                ),
+                                              ),
+                                              Positioned(
+                                                right: 20,
+                                                child: Container(
+                                                  child: Image.asset(
+                                                      "assets/icon/beginlearn.png",
+                                                      // height: 80,
+                                                      width: 60),
+                                                ),
+                                              ),
+                                            ],
+                                          )
+                                        : Container(
+                                            // child: Text(
+                                            //   "Pelajaran yang kamu cari tidak ada",
+                                            //   style: TextStyle(
+                                            //       fontFamily: "Mont",
+                                            //       fontWeight: FontWeight.w500),
+                                            // ),
+                                            );
                               })),
-                    )),
+                    ))
           ],
         ),
       ),
